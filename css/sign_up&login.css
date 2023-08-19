@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(214, 226, 241);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6rem;
+    color: #021129;
+}
+
+.container{
+    /* width: 600px; */
+    margin-top: 50px;
+}
+
+.register_box{
+    width: 1100px;
+    display: flex;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 8px 0px #a4b8db;
+    border-radius: 10px;
+    background-color: #E5ECF6;
+}
+
+.register_box_login{
+    margin-top: 150px;
+}
+
+.reset_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 175px;
+}
+
+.register_box_left{
+    width: 500px;
+    background-image: url(https://cdn.leonardo.ai/users/f76b8649-2041-4a8f-ab71-f8d2cfb1c531/generations/c7e93354-2a0b-473d-bac8-48c4446d8631/DreamShaper_v7_3d_classroom_with_undergraduates_blue_color_0.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    float: left;
+    border-radius: 10px;
+}
+
+.login_left{
+    background-image: url(https://cdn.leonardo.ai/users/f76b8649-2041-4a8f-ab71-f8d2cfb1c531/generations/c7e93354-2a0b-473d-bac8-48c4446d8631/DreamShaper_v7_3d_classroom_with_undergraduates_blue_color_3.jpg);
+}
+
+.register_box_right{
+    width: 600px;
+    height: auto;
+    float: right;
+    background-color: #E5ECF6;
+    padding:  50px 50px;
+    border-radius: 10px;
+    /* border-radius: 10px; */
+    /* box-shadow: 0px 0px 8px 0px #80adfa; */
+}
+
+/* .register_box:hover{
+    box-shadow: 0px 0px 15px 0px #80adfa;
+} */
+
+form{
+    margin-top: 45px;
+
+}
+
+.input-group-text{
+    border-radius: none;
+    margin-right: 10px;
+    background-color: #E5ECF6;
+    border: none;
+}
+
+.input-group-text i{
+    width: 40px;
+    padding: 15px 0;
+    color: #021129;
+}
+
+.form-control{
+    padding: 0px 15px;
+    border-radius: 5px;
+}
+
+.form-control::placeholder{
+    color: #959BA5;
+}
+
+.btn{
+    width:  100%;
+    background-color: #1959C2;
+    padding: 10px;
+    margin-top: 25px;
+}
+
+.btn:hover{
+    background-color: #003486;
+}
+
+@media screen and (max-width: 500px) {
+
+    .container{
+        width: 100%;
+    }
+
+}
