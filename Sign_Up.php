@@ -56,7 +56,17 @@
                         </div>
                         <div class="form-floating">
                             <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name" name="name" value="" required>
-                            <label for="floatingInputGrid">Name</label>
+                            <label for="floatingInputGrid">First Name</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name" name="name" value="" required>
+                            <label for="floatingInputGrid">Last Name</label>
                         </div>
                     </div>
 

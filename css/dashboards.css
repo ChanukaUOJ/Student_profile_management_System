@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+:root{
+    --body-color: rgb(214, 226, 241);
+
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background-color: var(--body-color);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6rem;
+    color: #021129;
+}
+
+a{
+    text-decoration: none;
+    color: #021129;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 300px;
+    padding: 10px;
+    background-color: #E5ECF6;
+    z-index: 2;
+    /* box-shadow: 2px 2px 8px 0px #80adfa; */
+}
+
+.sidebar header{
+    position: relative;
+}
+
+.menuicon{
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+    text-align: end;
+    font-size: 25px;
+    padding: 20px 20px;
+
+}
+
+.sidebar .text{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.sidebar .image-text img{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.name{
+    font-size: 20px;
+}
+
+.header-text{
+    text-align: center;
+}
+
+.menu-bar{
+    margin-top: 40px;
+}
+
+.sidebar header .toggle{
+    position: absolute;
+    top: 50px;
+    left: -25px;
+    transform: translateY(-50%);
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;;
+    font-size: 22px;
+}
+
+.menu-links{
+    list-style-type: none;
+}
+
+.nav-link{
+    padding: 10px 15px 10px 30px;
+    width: 100%;
+    margin-top: 10px;
+    background-color: rgb(210, 223, 247);
+    border-radius: 10px;
+}
+
+.nav-link span{
+    margin-left: 20px;
+}
+
+
+/* main-section */
+.mainbar{
+    width: calc(100% - 300px);
+    background-color: rgb(206, 223, 255);
+    min-height: 100vh;
+    float: right;
+}
+
+#navbar{
+    position: fixed;
+    z-index: 1;
+    background-color: #E5ECF6;
+    width: 100%;
+    height: 100px;
+    box-shadow: 2px 2px 8px 0px #80adfa;
+}
+
+#navbar div{
+    display: inline;
+}
+
+
+#logo{
+    width: 500px;
+    height: auto;
+    float: left;
+    margin-top: 15px;
+    margin-left: 55px;
+}
+
+.card-box{
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 375px 375px 375px 375px;
+}
+
+.card{
+    position: relative;
+    width: 350px;
+    height: 500px;
+    background-color: rgb(230, 243, 255);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px 0px #80adfa;
+    margin-bottom: 25px;
+}
+
+.card img{
+    width: 100%;
+    height: 215px;
+    border-radius: 10px;
+}
+
+.description p{
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+}
+
+.bottom_details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+}
+
+.bottom_details img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.postarticle{
+    display: flex;
+    margin: auto;
+}
+
+.postarticle a{
+    position: fixed;
+    font-size: 80px;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0px 50px 50px 0px;
+}
+
+.fa-circle-plus{
+    color: rgb(247, 51, 51);
+    text-align: end;
+    box-shadow: 5px 5px 10px 0 rgb(90, 62, 62);
+    border-radius: 50%;
+}
+
+.fa-thumbs-up{
+    color: rgb(247, 51, 51);
+    font-size: 20px;
+}
