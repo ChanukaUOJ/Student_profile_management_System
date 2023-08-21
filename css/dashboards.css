@@ -37,6 +37,7 @@ a{
     padding: 10px;
     background-color: #E5ECF6;
     z-index: 2;
+    padding-left: 0;
     /* box-shadow: 2px 2px 8px 0px #80adfa; */
 }
 
@@ -108,8 +109,24 @@ a{
     border-radius: 10px;
 }
 
+.nav-link:hover{
+    background-color: rgb(98, 153, 255);
+    cursor: pointer;
+    box-shadow: 2px 2px 8px 0px #80adfa;
+}
+
 .nav-link span{
     margin-left: 20px;
+}
+
+.logout{
+    margin-top: 80px;
+    background-color: rgb(253, 76, 76);
+}
+
+.logout:hover{
+    background-color: rgb(255, 65, 65);
+    box-shadow: 2px 2px 8px 0px #fa8080;
 }
 
 
@@ -150,6 +167,7 @@ a{
     padding: 50px;
     display: grid;
     grid-template-columns: 375px 375px 375px 375px;
+    margin-top: 80px;
 }
 
 .card{
@@ -176,19 +194,14 @@ a{
 }
 
 .bottom_details{
+    width: 85%;
+    position: absolute;
+    bottom: 15px;
+    left: 35px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    position: absolute;
-    bottom: 25px;
-    left: 0;
-}
 
-.bottom_details img{
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
 }
 
 .postarticle{
@@ -213,7 +226,19 @@ a{
     border-radius: 50%;
 }
 
+.likebuttonbody{
+    position: absolute;
+    right: 0;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 15px;
+    /* box-shadow: 5px 5px 10px 0 rgb(255, 222, 222); */
+}
+
 .fa-thumbs-up{
     color: rgb(247, 51, 51);
     font-size: 20px;
 }
+

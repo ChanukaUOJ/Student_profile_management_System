@@ -36,8 +36,7 @@
                         </div>
                         <div class="form-floating">
                             <input type="password" class="form-control" id="floatingInputGrid" placeholder="Reg No | Staff ID" value="">
-                            <label for="floatingInputGrid">Reg No | Staff ID</label>
-                            
+                            <label for="floatingInputGrid">Reg No | Staff ID</label>     
                         </div>
                     </div>
 

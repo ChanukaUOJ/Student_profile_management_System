@@ -13,35 +13,85 @@
 
     <div class="container">
         <!-- <h3 style="text-align: center; font-size: 55px;  font-weight: bold;">Register</h3> -->
-
         <div class="reset_box">
             <div class="register_box_right">
-                
-                <h3 style="text-align: center; font-size: 42px;"><span style="font-weight: 600;">Reset your password</span></h3> 
+               
+                    <!-- display1 -->
+                    <h3 style="text-align: center; font-size: 42px;"><span style="font-weight: 600;">Reset your password</span></h3> 
 
-                <form action="" method="">
+                    <form action="" method="POST">
 
-                    <input type="hidden" name="userId">
+                        <input type="hidden" name="userId">
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="University Registered Email" value="">
+                                <label for="floatingInputGrid">University Registered Email</label>
+                            </div>
                         </div>
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingInputGrid" placeholder="University Registered Email" value="">
-                            <label for="floatingInputGrid">University Registered Email</label>
+
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3" name="send">Send</button>
                         </div>
-                    </div>
 
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary mb-3">Send</button>
-                    </div>
+                        <p></p>
 
-                    <p></p>
+                        <p style="text-align: center; margin-top: 15px;"><a href="#">Resend</a></p>
+                        
+                    </form>
 
-                    <p style="text-align: center; margin-top: 15px;"><a href="#">Resend</a></p>
-                    
-                </form>
+                    <hr><!--remove this when you set the php functions for displays-->
+                    <!-- display2 -->
+                    <h3 style="text-align: center; font-size: 42px;"><span style="font-weight: 600;">Reset your password</span></h3> 
+                    <p style="text-align: center;">Enter a valid password</p>
+                    <form action="" method="POST">
+
+                        <input type="hidden" name="userId">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fa-solid fa-id-card"></i></div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingInputGrid" placeholder="Reg No | Staff ID" value="">
+                                <label for="floatingInputGrid">Temporary password</label>     
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fa-solid fa-id-card"></i></div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingInputGrid" placeholder="Reg No | Staff ID" value="">
+                                <label for="floatingInputGrid">New password</label>     
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fa-solid fa-id-card"></i></div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingInputGrid" placeholder="Reg No | Staff ID" value="">
+                                <label for="floatingInputGrid">Confirm password</label>     
+                            </div>
+                        </div>
+
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3">Change password</button>
+                        </div>
+
+                        <p style="text-align: center;">Your password has been changed sucessesfully!</p>
+
+                        <!-- <p style="text-align: center; margin-top: 15px;"><a href="#">Resend</a></p> -->
+                        
+                    </form>
+
+               
                 
             </div>
         </div>
