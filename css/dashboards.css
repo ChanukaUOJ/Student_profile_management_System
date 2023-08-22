@@ -36,7 +36,7 @@ a{
     width: 300px;
     padding: 10px;
     background-color: #E5ECF6;
-    z-index: 2;
+    z-index: 150;
     padding-left: 0;
     /* box-shadow: 2px 2px 8px 0px #80adfa; */
 }

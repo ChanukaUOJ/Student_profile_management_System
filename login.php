@@ -53,7 +53,7 @@
                     <div class="col-auto">
                         <button type="submit" class="btn btn-primary mb-3">Login</button>
                     </div>
-                    <p style="text-align: center; margin-top: 15px;"><a href="reset_your_password.php">Fogot your password</a></p>
+                    <p style="text-align: center; margin-top: 15px;"><a href="forgot_password/reset_your_password.php">Fogot password</a></p>
                     <p style="text-align: center; margin-top: 15px;">Don't have an account? <a href="Sign_up.php">Sign Up here</a></p>
                     
                 </form>
