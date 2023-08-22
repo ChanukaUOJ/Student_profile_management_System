@@ -140,7 +140,7 @@ a{
 
 #navbar{
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     background-color: #E5ECF6;
     width: 100%;
     height: 100px;
@@ -174,9 +174,12 @@ a{
     position: relative;
     width: 350px;
     height: 500px;
-    background-color: rgb(230, 243, 255);
+    /* background-color: rgb(230, 243, 255); */
+    background: linear-gradient(135deg,rgb(230, 243, 255),rgb(205, 230, 255));
     padding: 20px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
     box-shadow: 2px 2px 8px 0px #80adfa;
     margin-bottom: 25px;
 }
@@ -185,6 +188,41 @@ a{
     width: 100%;
     height: 215px;
     border-radius: 10px;
+}
+
+.card-title{
+    position: absolute;
+    top: 250px;
+    left: 35px;
+}
+
+.author_details{
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top: 315px;
+    left: 35px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.author_image{
+    position: absolute;
+    left: 0;
+}
+
+.author_regno{
+    position: absolute;
+    left: 40px;
+}
+
+.card-text{
+    position: absolute;
+    top: 350px;
+    left: 35px;
+    width: 85%;
 }
 
 .description p{
@@ -242,3 +280,173 @@ a{
     font-size: 20px;
 }
 
+/* search for a student */
+
+.findastudent{
+    margin-top: 200px;
+    min-height: 100vh;
+    z-index: 1;
+}
+
+.findastudentheading{
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.searchbar{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.searchbaritems{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchbaritems i{
+    font-size: 30px;
+    margin-left: 15px;
+}
+
+.searchstudentgrid{
+    display: grid;
+    grid-template-columns: 350px 350px 350px 350px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.studentlevel{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 8px 0px #80adfa;
+}
+
+.studentlevel:hover{
+    background-color: rgb(98, 153, 255);
+    cursor: pointer;
+    box-shadow: 2px 2px 8px 0px #80adfa;
+}
+
+.level-text{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    /* background: linear-gradient(rgb(88, 143, 245),rgb(44, 106, 221),rgb(25, 81, 184)); */
+    background-color: #E5ECF6;;
+}
+
+.level-text p{
+    margin-top: 12px;
+    font-size: 30px;
+    font-weight: 600;
+    
+}
+
+.levelimage img{
+    width: 300px;
+}
+
+/* addform */
+.postarticleform, .feedbackform{
+    width: 600px;
+    border-radius: 10px;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    padding: 25px 30px;
+    box-shadow: 2px 2px 8px 0px #80adfa;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.updatedetails{
+    width: 900px;
+    border-radius: 10px;
+    position: absolute;
+    top: 1150px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    padding: 25px 30px;
+    box-shadow: 2px 2px 8px 0px #80adfa;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.addpostclosebutton{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+.addpostclosebutton i{
+    font-size: 25px;
+    text-align: right;
+}
+
+.addpostclosebutton i:hover{
+    color: rgb(247, 51, 51);
+    cursor: pointer;
+}
+
+.addposttitle h1{
+    margin: 20px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.containerdashboard#blur.active{
+    filter: blur(20px);
+}
+
+.postbutton{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.postbutton button{
+    padding: 10px 20px;
+    border: none;
+}
+
+.postbutton button:hover{
+    background-color: rgb(60, 187, 77);
+    border: none;
+}
+
+#postarticleform.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+#feedbackform.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+#updatedetails.active{
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
