@@ -496,3 +496,50 @@ a{
     box-shadow: 2px 2px 8px 0px #176cff;
 }
 
+.postcard{
+    width: 80%;
+    height: 150px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* background: linear-gradient(135deg,rgb(230, 243, 255),rgb(205, 230, 255)); */
+    background-color: rgb(230,243,255);
+    box-shadow: 2px 2px 8px 0px #80adfa;
+    border-radius: 50px;
+}
+
+.postcard{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.postcardleft{
+    float: left;
+}
+
+.postcardleft h4{
+    display: inline;
+}
+
+.postcardright{
+    float: right;
+}
+
+.postcardright div{
+    display: inline;
+}
+
+.postcardright div a{
+    font-size: 20px;
+    margin: 0 5px;
+}
+
+.postcardimage{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    /* background-color: red; */
+}
+
+
+

@@ -1530,6 +1530,44 @@
 
             </div>
             <!-- find a student -->
+
+            <!-- articledashboard -->
+            <div class="articledashboard">
+
+                <h1 class="findastudentheading"  style="margin-top: 200px">Article Dashboard</h1>
+
+                <div class="articledashboard_child">
+
+                    <div class="postcard">
+
+                        <div class="postcardimage">
+                        <img src="../images/login.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px;" />
+                        </div>
+
+                        <div class="postcardleft">
+                            <h4>How to create a login forum using php</h4>
+                            <h5>2023/08/24</h5>
+                        </div>
+
+                        <div class="postcardmiddle">
+                            
+                        </div>
+
+                        <div class="postcardright">
+                            <div class="postcardedit">
+                                <a href=""><i class="fa-solid fa-file-pen"></i></a>
+                            </div>
+                            <div class="postcardremove">
+                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- articledashboard -->
         
         </div>
     </div>
