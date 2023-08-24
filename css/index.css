@@ -6,20 +6,21 @@
 }
 
 body{
-    background-color: rgb(214, 226, 241);
+    background-color: rgb(243, 249, 255);
     font-family: 'Poppins', sans-serif;
     line-height: 1.6rem;
     color: #021129;
 }
 
-.container{
-    width: 80%;
-}
-
 #navbar{
-    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100px;
+    height: 150px;
+    z-index: 2;
+    padding: 15px 100px;
+    background-color: rgb(243, 249, 255);
 }
 
 #navbar div{
@@ -33,17 +34,422 @@ body{
     float: left;
 }
 
+.navbar_links ul{
+    margin-top: 20px;
+    float: right;
+}
+
 .navbar_links li{
     display: inline;
-    float: right;
 }
 
 li{
     list-style: none;
-    padding: 5px 10px;
+    margin: 0px 20px;
 }
 
 .navbar_links a{
     text-decoration: none;
+    color: #1d3f70;
+    font-size: 20px;
     
+}
+
+.head{
+    width: 100%;
+    height: calc(100vh - 100px);
+    z-index: 1;
+}
+
+.head-image{
+    width: 45%;
+    position: absolute;
+    top: 150px;
+    right: 100px;
+}
+
+.head-image img{
+    width: 100%;
+}
+
+.main-title{
+    width: 100%;
+    position: absolute;
+    top: 200px;
+    left: 0x;
+    padding: 100px;
+    display: block;
+}
+
+.main-title h1{
+    text-align: start;
+    font-size: 75px;
+}
+
+.main-title h1 span{
+    font-weight: bold;
+}
+
+.main-title h3{
+    margin-top: 10px;
+}
+
+.loginbuttonmain{
+    background-color: #c92828;
+    border: none;
+    padding: 15px 25px;
+    margin-top: 15px;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+}
+
+.loginbuttonmain i{
+    margin-right: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+.loginbuttonmain:hover{
+    background-color: #bb1515;
+}
+
+.loginbuttonnav{
+    background-color: #fbb03b;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.loginbuttonnav:hover{
+    background-color: #e29518;
+}
+
+/* login */
+.register_box{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 1100px;
+    display: flex;
+    box-shadow: 0px 0px 8px 0px #a4b8db;
+    border-radius: 10px;
+    background-color: #E5ECF6;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.containerindexhtml#blur.active{
+    filter: blur(20px);
+}
+
+#register_box.active{
+    top: 35%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+    z-index: 3;
+}
+
+#register_box_signup.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+    z-index: 3;
+}
+
+.register_box_login{
+    margin-top: 150px;
+}
+
+.reset_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 175px;
+}
+
+.register_box_left{
+    width: 500px;
+    background-image: url(https://cdn.leonardo.ai/users/f76b8649-2041-4a8f-ab71-f8d2cfb1c531/generations/c7e93354-2a0b-473d-bac8-48c4446d8631/DreamShaper_v7_3d_classroom_with_undergraduates_blue_color_0.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    float: left;
+    border-radius: 10px;
+}
+
+.login_left{
+    background-image: url(https://cdn.leonardo.ai/users/f76b8649-2041-4a8f-ab71-f8d2cfb1c531/generations/c7e93354-2a0b-473d-bac8-48c4446d8631/DreamShaper_v7_3d_classroom_with_undergraduates_blue_color_3.jpg);
+}
+
+.register_box_right{
+    width: 600px;
+    height: auto;
+    float: right;
+    background-color: #E5ECF6;
+    padding:  30px 50px;
+    border-radius: 10px;
+    /* border-radius: 10px; */
+    /* box-shadow: 0px 0px 8px 0px #80adfa; */
+}
+
+/* .register_box:hover{
+    box-shadow: 0px 0px 15px 0px #80adfa;
+} */
+
+form{
+    margin-top: 45px;
+
+}
+
+.input-group-text{
+    border-radius: none;
+    margin-right: 10px;
+    background-color: #E5ECF6;
+    border: none;
+}
+
+.input-group-text i{
+    width: 40px;
+    padding: 15px 0;
+    color: #021129;
+}
+
+.form-control{
+    padding: 0px 15px;
+    border-radius: 5px;
+}
+
+.form-control::placeholder{
+    color: #959BA5;
+}
+
+.btn{
+    width:  100%;
+    background-color: #1959C2;
+    padding: 10px;
+    margin-top: 25px;
+}
+
+.btn:hover{
+    background-color: #003486;
+}
+
+.addpostclosebutton{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+.addpostclosebutton i{
+    font-size: 25px;
+    text-align: right;
+}
+
+.addpostclosebutton i:hover{
+    color: rgb(247, 51, 51);
+    cursor: pointer;
+}
+
+.toScreens{
+    color:#1959C2;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* media */
+@media (max-width: 1200px) {
+
+    /* mainwebpage */
+    #navbar{
+        width: 100%;
+        padding: 0;
+    }
+    
+    #navbar div{
+        display: flex;
+        justify-content: center;
+    }
+
+    #logo{
+        width: 300px;
+        float:none;
+        margin-top: 25px;
+    }
+
+    .navbar_links{
+        margin-top: 15px;
+    }
+
+    .navbar_links li{
+        display: inline;
+        margin: 0 15px;
+    }
+
+    .navbar_links li a{
+        font-size: 20x;
+ 
+    }
+
+    .head-image{
+        width: 75%;
+        margin-top: 75px;
+    }
+
+    .head-image img{
+        margin-left: 15px;
+    }
+
+    .main-title{
+        top: 700px;
+        left: 0x;
+        z-index: 1;
+    }
+    
+    .main-title h1{
+        text-align: start;
+        font-size: 70px;
+        text-align: center;
+    }
+    
+    .main-title h4{
+        margin-top: 15px;
+        text-align: center;
+        font-size: 30px;
+    }
+    
+    .loginbuttonmain{
+        padding: 10px 20px;
+        margin-left: 110px;
+    }
+    
+    .loginbuttonmain i{
+        margin-right: 20px;
+        font-size: 18px;
+        color: white;
+    }
+
+    .loginbuttonnav{
+        background-color: #fbb03b;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+    }
+
+    .loginbuttonnav:hover{
+        background-color: #e29518;
+    } 
+
+    /* loginpage */
+    .register_box{
+        width: 800px;
+    }
+
+    .register_box_left{
+        width: 300px;
+    }
+     
+
+}
+
+@media (max-width: 600px) {
+
+    /* mainwebpage */
+    #navbar{
+        width: 100%;
+        padding: 0;
+    }
+    
+    #navbar div{
+        display: flex;
+        justify-content: center;
+    }
+
+    #logo{
+        width: 300px;
+        float:none;
+        margin-top: 25px;
+    }
+
+    .navbar_links{
+        margin-top: 15px;
+    }
+
+    .navbar_links li{
+        display: inline;
+        margin: 0 15px;
+    }
+
+    .navbar_links li a{
+        font-size: 15x;
+ 
+    }
+
+    .head-image{
+        width: 75%;
+        margin-top: 25px;
+    }
+
+    .head-image img{
+        margin-left: 45px;
+    }
+
+    .head{
+        width: 100%;
+    }
+
+    .main-title{
+        top: 350px;
+        left: 0x;
+    }
+    
+    .main-title h1{
+        text-align: start;
+        font-size: 30px;
+        text-align: center;
+        padding: 0;
+    }
+    
+    .main-title h4{
+        margin-top: 10px;
+        text-align: center;
+        font-size: 20px;
+    }
+    
+    .loginbuttonmain{
+        padding: 10px 20px;
+        margin-left: 100px;
+    }
+    
+    .loginbuttonmain i{
+        margin-right: 20px;
+        font-size: 18px;
+        color: white;
+    }
+
+    .loginbuttonnav{
+        background-color: #fbb03b;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .loginbuttonnav:hover{
+        background-color: #e29518;
+    } 
+
+    /* loginpage */
+    .register_box{
+        width: 500px;
+    }
+
+    .register_box_left{
+        width: 0px;
+    }
+     
+
 }

@@ -70,7 +70,7 @@
                         </li>
                         <li class="nav-link logout">
                             <a href="#">
-                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <i class="fa-solid fa-power-off"></i>
                                 <span>Logout</span>
                             </a>
                         </li>
@@ -337,8 +337,7 @@
                         </div> 
                         <div class="levelimage">
                             <a href="#"><img src="../images/levels/level1.jpg" alt=""></a>
-                        </div>
-                        
+                        </div>   
                     </div>
 
                     <div class="studentlevel">
@@ -375,10 +374,1162 @@
                 </div>
                 <!-- searchstudentgrid -->
 
+                <!-- studentdatabase -->
+                <div class="studentdatabase">
+                <hr>
+                    <div class="level1mainbox">
+
+                        <h1 style="text-align: center;" class="findastudentheading">Level 1 Undergraduates</h1>
+
+                        <!-- searchbar -->
+                        <div class="searchbar">
+                            <form action="" method="">
+                                <div class="searchbaritems">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
+                                        <label for="floatingInputGrid">Enter a registration number</label>     
+                                    </div>
+                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                </div> 
+                            </form>
+                        </div>
+                        <!-- searchbar -->
+
+                        <div class="level-1-grid">
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+                                    <a href="showprofile.php" target="_blank">
+                                        <div class="card profilecardwidth" style="border-radius: 15px;">
+                                        <div class="card-body text-center">
+                                            <div class="mt-3 mb-4">
+                                            <img src="../images/dummyprofile.png"
+                                                class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                            </div>
+                                            <h4 class="mb-2">PDCC Ranathunga</h4>
+                                            <p class="text-muted mb-2">@web Developer</p>
+                                            <p class="text-muted mb-4">2020/CSC/038</p>
+                                            <div class="mb-4 pb-2">
+                                            <button type="button" class="btn btn-outline-primary btn-floating">
+                                                <i class="fa-brands fa-linkedin"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary btn-floating">
+                                                <i class="fa-brands fa-github"></i>
+                                            </button>
+                                            </div>
+                                            <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                            contact me
+                                            </button>
+                                            <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="level2mainbox">
+
+                        <h1 style="text-align: center;" class="findastudentheading">Level 2 Undergraduates</h1>
+
+                        <!-- searchbar -->
+                        <div class="searchbar">
+                            <form action="" method="">
+                                <div class="searchbaritems">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
+                                        <label for="floatingInputGrid">Enter a registration number</label>     
+                                    </div>
+                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                </div> 
+                            </form>
+                        </div>
+                        <!-- searchbar -->
+
+                        <div class="level-1-grid">
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="level3mainbox">
+
+                        <h1 style="text-align: center;" class="findastudentheading">Level 3 Undergraduates</h1>
+
+                        <!-- searchbar -->
+                        <div class="searchbar">
+                            <form action="" method="">
+                                <div class="searchbaritems">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
+                                        <label for="floatingInputGrid">Enter a registration number</label>     
+                                    </div>
+                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                </div> 
+                            </form>
+                        </div>
+                        <!-- searchbar -->
+
+                        <div class="level-1-grid">
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="level4mainbox">
+
+                        <h1 style="text-align: center;" class="findastudentheading">Level 4 Undergraduates</h1>
+
+                        <!-- searchbar -->
+                        <div class="searchbar">
+                            <form action="" method="">
+                                <div class="searchbaritems">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
+                                        <label for="floatingInputGrid">Enter a registration number</label>     
+                                    </div>
+                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                </div> 
+                            </form>
+                        </div>
+                        <!-- searchbar -->
+
+                        <div class="level-1-grid">
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="container profilecard">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-md-12 col-xl-4">
+
+                                    <div class="card profilecardwidth" style="border-radius: 15px;">
+                                    <div class="card-body text-center">
+                                        <div class="mt-3 mb-4">
+                                        <img src="../images/dummyprofile.png"
+                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                                        </div>
+                                        <h4 class="mb-2">PDCC Ranathunga</h4>
+                                        <p class="text-muted mb-2">@web Developer</p>
+                                        <p class="text-muted mb-4">2020/CSC/038</p>
+                                        <div class="mb-4 pb-2">
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-floating">
+                                            <i class="fa-brands fa-github"></i>
+                                        </button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
+                                        contact me
+                                        </button>
+                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- studentdatabase -->
+
             </div>
             <!-- find a student -->
-
-            <hr>
         
         </div>
     </div>
@@ -531,7 +1682,7 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <textarea type="text" class="form-control" id="floatingInputGrid" placeholder="Short Bio..." name="bio" value="" required></textarea>
+                    <textarea type="text" class="form-control" id="floatingInputGrid" placeholder="Short Bio..." name="bio" value="" rows="10" required></textarea>
                     <label for="floatingInputGrid">Short Bio...<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -542,14 +1693,14 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="education-1" name="education-1" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="education-1" name="education-1" value=""required>
                     <label for="floatingInputGrid">Education 1<span style="color: red;">*</span></label>
                 </div>
             </div>
             
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="education-2" name="education-2" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="education-2" name="education-2" value=""required>
                     <label for="floatingInputGrid">Education 2<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -560,28 +1711,28 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-1" name="skill-1" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-1" name="skill-1" value=""required>
                     <label for="floatingInputGrid">Skill 1<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-2" name="skill-2" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-2" name="skill-2" value=""required>
                     <label for="floatingInputGrid">Skill 2<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-3" name="skill-3" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-3" name="skill-3" value=""required>
                     <label for="floatingInputGrid">Skill 3<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-4" name="skill-4" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-4" name="skill-4" value=""required>
                     <label for="floatingInputGrid">Skill 4<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -592,14 +1743,14 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="language-1" name="language-1" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="language-1" name="language-1" value=""required>
                     <label for="floatingInputGrid">Language 1<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="language-2" name="language-2" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="language-2" name="language-2" value="" required>
                     <label for="floatingInputGrid">Language 2<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -610,14 +1761,14 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="experience-1" name="experience-1" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="experience-1" name="experience-1" value="" required>
                     <label for="floatingInputGrid">Experience 1<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="experience-2" name="experience-2" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="experience-2" name="experience-2" value=""required>
                     <label for="floatingInputGrid">Experience 2<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -628,18 +1779,36 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="volunteering-1" name="volunteering-1" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="volunteering-1" name="volunteering-1" value="" required>
                     <label for="floatingInputGrid">Volunteering 1<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="volunteering-2" name="volunteering-2" value="" rows="50" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="volunteering-2" name="volunteering-2" value=""required>
                     <label for="floatingInputGrid">Volunteering 2<span style="color: red;">*</span></label>
                 </div>
             </div>
             <!-- volunteering -->
+
+            <!-- socialmedia links -->
+            <label for="floatingInputGrid" style="margin-top: 30px; margin-bottom: 20px; font-weight: bold;">Social media links... <span style="font-weight: 100;"> | Type 'No' If you don't have</span></label>
+
+            <div class="input-group mb-3">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Linkedin" name="socialmedia-1" value="" required>
+                    <label for="floatingInputGrid">Linkedin<span style="color: red;">*</span></label>
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Github" name="socialmedia-2" value="" required>
+                    <label for="floatingInputGrid">Github<span style="color: red;">*</span></label>
+                </div>
+            </div>
+            <!-- socialmedia links -->
 
             <label for="floatingInputGrid" style="margin-top: 20px;">By updating this form, I certify that above entered details are true...</label>
 
@@ -650,6 +1819,10 @@
         </form>
     </div>
     <!-- updatedetails -->
+
+    <!-- showprofile -->
+
+    <!-- showprofile -->
 
 
 

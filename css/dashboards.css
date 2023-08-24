@@ -160,7 +160,7 @@ a{
     margin-left: 55px;
 }
 
-.card-box{
+.card-box, .level-1-grid{
     position: relative;
     z-index: 0;
     width: 100%;
@@ -170,7 +170,7 @@ a{
     margin-top: 80px;
 }
 
-.card{
+.card-box .card{
     position: relative;
     width: 350px;
     height: 500px;
@@ -184,7 +184,7 @@ a{
     margin-bottom: 25px;
 }
 
-.card img{
+.card-box .card img{
     width: 100%;
     height: 215px;
     border-radius: 10px;
@@ -356,6 +356,31 @@ a{
     width: 300px;
 }
 
+.studentdatabase{
+    margin-top: 300px;
+}
+
+.level1mainbox{
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.level-1-grid{
+    position: relative;
+    top: 0;
+    right: 115px;
+    margin: 0;
+}
+
+.profilecard{
+    margin: 10px 0px;
+}
+
+.profilebutton{
+    margin-top: 10px;
+}
+
 /* addform */
 .postarticleform, .feedbackform{
     width: 600px;
@@ -431,12 +456,14 @@ a{
     border: none;
 }
 
+
 #postarticleform.active{
     top: 50%;
     visibility: visible;
     opacity: 1;
     transition: 0.5s;
 }
+
 
 #feedbackform.active{
     top: 50%;
@@ -450,3 +477,13 @@ a{
     opacity: 1;
     transition: 0.5s;
 }
+
+/* showprofile */
+/* .showprofile{
+    width: 100%;
+} */
+
+.profilecardwidth{
+    width: 350px;
+}
+

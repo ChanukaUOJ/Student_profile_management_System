@@ -11,22 +11,265 @@
 </head>
 <body>
 
-    <div id="navbar">
-        <div class="container">
+    <!-- container -->
+    <div class="containerindexhtml" id="blur">
+
+        <div id="navbar">
             <div id="logo">
                 <img src="https://www.csc.jfn.ac.lk/wp-content/uploads/2017/02/logo_new.png" alt="">
             </div>
     
             <div class="navbar_links">
                 <ul>
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="Sign_Up.php">Register</a></li>
+                    <li><a href="https://www.csc.jfn.ac.lk/" target="_blank">Department</a></li>
+                    <li><a href="https://lms.jfn.ac.lk/lms/course/index.php?categoryid=9" target="_blank">LMS</a></li>
+                    <li class="loginbuttonmain loginbuttonnav" onclick="loginToggle()"><a href="#">Login</a></li>
+                    <li><a href="#" onclick="RegisterToggle()">Register</a></li>
                 </ul>
             </div>
         </div>
-    </div>
     
+        <div class="head">
+            <div class="main-title">
+                <h1>Student Profile<br/><span>Management System</span></h1>
+                <h4><i>"Your Profile, Your Journey: Charting Success Together"</i></h4>
+                <button type="submit" class="loginbuttonmain" id="loginbuttonmain" onclick="loginToggle()"><i class="fa-solid fa-right-to-bracket"></i>Login</button>
+            </div>
+            <div class="head-image">
+                <img src="images/websitehead.png" alt="head-image">
+            </div>
+        </div>
 
-    
+    </div>
+    <!-- container -->
+
+    <!-- login -->
+    <div class="container">
+        <!-- <h3 style="text-align: center; font-size: 55px;  font-weight: bold;">Register</h3> -->
+
+        <div class="register_box register_box_login" id="register_box">
+
+            <!-- register_box_left -->
+            <div class="register_box_left login_left">
+            </div>
+            <!--register_box_left-->
+
+            <!-- register_box_right -->
+            <div class="register_box_right login_box">
+
+                <div class="addpostclosebutton">
+                    <a href="#" onclick="loginClosePopup()"><i class="fa-solid fa-circle-xmark"></i></a>
+                </div>
+                
+                <h3 style="text-align: center; font-size: 42px;"><span style="font-weight: 600;">Login</span></h3>
+                <p style="text-align: center; font-size: 20px;">Use your staff id or university registration
+                    number when you log in</p> 
+
+                <form action="" method="">
+
+                    <input type="hidden" name="userId">
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-id-card"></i></div>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingInputGrid" placeholder="Reg No | Staff ID" value="">
+                            <label for="floatingInputGrid">Reg No | Staff ID</label>     
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-key"></i></div>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingInputGrid" placeholder="Password" value="">
+                            <label for="floatingInputGrid">Password</label>
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">Login</button>
+                    </div>
+                    <p style="text-align: center; margin-top: 15px;"><a href="forgot_password/reset_your_password.php">Fogot password</a></p>
+                    <p style="text-align: center; margin-top: 15px;">Don't have an account? <a class="toScreens" onclick="toSignUp()">Sign Up here</a></p>
+                    
+                </form>
+                
+            </div>
+            <!--register_box_right-->
+
+
+        </div>
+
+
+    </div>
+    <!-- login -->
+
+    <!-- register -->
+    <div class="container">
+        <!-- <h3 style="text-align: center; font-size: 55px;  font-weight: bold;">Register</h3> -->
+
+        <div class="register_box register_box_signup" id="register_box_signup">
+            
+            <div class="register_box_left">
+            </div> <!--register_box_left-->
+
+            <div class="register_box_right">
+
+                <div class="addpostclosebutton">
+                    <a href="#" onclick="RegisterClosePopup()"><i class="fa-solid fa-circle-xmark"></i></a>
+                </div>
+
+                <h3 style="text-align:center; font-size: 42px;"><span style="font-weight: 600;">Sign up</span></h3>
+                <p style="text-align:center; font-size: 25px;">Student & Staff</p> 
+
+                <form action="" method="POST">
+
+                    <input type="hidden" name="userId" value="">
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-id-card"></i></div>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Reg No | Staff ID" name="regno" value="" required>
+                            <label for="floatingInputGrid">Reg No | Staff ID</label>
+                            
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name" name="name" value="" required>
+                            <label for="floatingInputGrid">First Name</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name" name="name" value="" required>
+                            <label for="floatingInputGrid">Last Name</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="University Registered Email" name="email" value="" required>
+                            <label for="floatingInputGrid">University Registered Email</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-hat-cowboy"></i></div>
+                        </div>
+                        <select class="form-control" style="color: #021129;" name="role" id="role" value="" required>
+                            <option class="form-control" value="" hidden>Select Role...</option>
+                            <option class="form-control" value="level-1">Level - 1</option>
+                            <option class="form-control" value="level-2">Level - 2</option>
+                            <option class="form-control" value="level-3">Level - 3</option>
+                            <option class="form-control" value="level-4">Level - 4</option>
+                            <option class="form-control" value="Staff Member">Staff Member</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-key"></i></div>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingInputGrid" placeholder="Password" name="password" value="" required>
+                            <label for="floatingInputGrid">Password</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-key"></i></div>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingInputGrid" placeholder="Confirm Password" name="confirmPassword" value="" required>
+                            <label for="floatingInputGrid">Confirm Password</label>
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">Register</button>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 15px;">Have already an account? <a class="toScreens" onclick="toLogin()">Login here</a></p>
+                    
+                </form>
+            
+            </div><!--register_box_right-->
+
+            
+        </div>
+
+
+    </div>
+    <!-- register -->
+
+    <!-- script -->
+    <script>
+
+        // popup
+        function loginToggle(){
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+
+            var register_box = document.getElementById('register_box');
+            register_box.classList.toggle('active');
+        }
+
+        function RegisterToggle(){
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+
+            var register_box = document.getElementById('register_box_signup');
+            register_box.classList.toggle('active');
+        }
+
+        function toSignUp(){
+            loginClosePopup();
+            RegisterToggle()
+        }
+
+        function toLogin(){
+            RegisterClosePopup();
+            loginToggle();
+        }
+
+        // close
+        function loginClosePopup() {
+            var blur = document.getElementById('blur');
+            blur.classList.remove('active');
+            
+            var register_box = document.getElementById('register_box');
+            register_box.classList.remove('active');
+        }
+
+        function RegisterClosePopup() {
+            var blur = document.getElementById('blur');
+            blur.classList.remove('active');
+            
+            var register_box = document.getElementById('register_box_signup');
+            register_box.classList.remove('active');
+        }
+
+    </script>
+    <!-- script -->
+
 </body>
 </html>
