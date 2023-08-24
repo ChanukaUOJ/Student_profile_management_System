@@ -65,7 +65,7 @@
                         <li class="nav-link">
                             <a href="#">
                                 <i class="fa-regular fa-file-lines"></i>
-                                <span>Create your CV</span>
+                                <span>View Your Profile</span>
                             </a>
                         </li>
                         <li class="nav-link logout">
@@ -116,7 +116,7 @@
                         <p class="card-text">Lorem ipsum dolor sit amet con secte tur, adipisicing elit. a </p>
                         <div class="bottom_details">
                             <!-- <img src="../images/background.jpg" alt=""> -->
-                            <a href="#" class="btn btn-primary">View More</a>
+                            <a href="articleview.php" class="btn btn-primary" target="_blank">Read</a>
                             <div class="likebuttonbody">
                                 <div  class="likebutton"><a href="#"><i class="fa-solid fa-thumbs-up"></i></a></div>
                             </div>
@@ -408,7 +408,7 @@
                                                 class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
                                             </div>
                                             <h4 class="mb-2">PDCC Ranathunga</h4>
-                                            <p class="text-muted mb-2">@web Developer</p>
+                                            <!-- <p class="text-muted mb-2">@web Developer</p> -->
                                             <p class="text-muted mb-4">2020/CSC/038</p>
                                             <div class="mb-4 pb-2">
                                             <button type="button" class="btn btn-outline-primary btn-floating">
@@ -417,10 +417,10 @@
                                             <button type="button" class="btn btn-outline-primary btn-floating">
                                                 <i class="fa-brands fa-github"></i>
                                             </button>
-                                            </div>
-                                            <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                            contact me
+                                            <button type="button" class="btn btn-outline-primary btn-floating">
+                                                <i class="fa-brands fa-hackerrank"></i>
                                             </button>
+                                            </div>
                                             <div class="d-flex justify-content-between text-center mt-5 mb-2">
                                             </div>
                                         </div>

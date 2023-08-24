@@ -13,64 +13,145 @@
 
     <div class="containerdashboard">
 
-        <div class="mainbar">
-
-        <section class="vh-100" style="background-color: #f4f5f7;">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-lg-6 mb-4 mb-lg-0">
-                    <div class="card mb-3" style="border-radius: .5rem;">
-                    <div class="row g-0">
-                        <div class="col-md-4 gradient-custom text-center text-white"
-                        style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                            alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                        <h5>Marie Horwitz</h5>
+            <div class="container">
+                
+                <div class="row g-0">
+                    <div class="col-md-4 gradient-custom text-center text-white avatarcolumn"
+                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                        <img src="../images/dummyprofile.png"
+                            alt="Avatar" class="img-fluid my-5" style="width: 200px; height: 200px;" />
+                        <h5>Chanuka Ranathunga</h5>
                         <p>Web Designer</p>
-                        <i class="far fa-edit mb-5"></i>
+                        <center>
+                        <div class="d-flex justify-content-start socialmedia">
+                            <a href="#!"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#!"><i class="fa-brands fa-github"></i></a>
+                            <a href="#!"><i class="fa-brands fa-hackerrank"></i></a>
+                            <a href="#!"><i class="fa-regular fa-envelope"></i></a>
                         </div>
-                        <div class="col-md-8">
+                        </center>
+                    </div>
+                    <div class="col-md-8">
                         <div class="card-body p-4">
-                            <h6>Information</h6>
+                            
+                            <h6 style="padding-top: 50px;">Information</h6>
                             <hr class="mt-0 mb-4">
                             <div class="row pt-1">
-                            <div class="col-6 mb-3">
-                                <h6>Email</h6>
-                                <p class="text-muted">info@example.com</p>
+                                <div class="col-6 mb-3">
+                                    <h6>First Name</h6>
+                                    <p class="text-muted">Chanuka</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <h6>Last Name</h6>
+                                    <p class="text-muted">Ranathunga</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <h6>Reg No:</h6>
+                                    <p class="text-muted">2020/CSC/038</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <h6>Email</h6>
+                                    <p class="text-muted">chamithchanuka23@gmail.com</p>
+                                </div>
                             </div>
-                            <div class="col-6 mb-3">
-                                <h6>Phone</h6>
-                                <p class="text-muted">123 456 789</p>
+                            
+                            
+                            <h6>Short Bio...</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row2">
+                                <div class="bio">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta laudantium repudiandae numquam consectetur tenetur earum exercitationem! Officia sed minima impedit!</p>
+                                </div>
                             </div>
-                            </div>
-                            <h6>Projects</h6>
+                            
+                            <h6>Education Qualification...</h6>
                             <hr class="mt-0 mb-4">
                             <div class="row pt-1">
-                            <div class="col-6 mb-3">
-                                <h6>Recent</h6>
-                                <p class="text-muted">Lorem ipsum</p>
+                                <div class="col-6 mb-3">
+                                    <h6>Higher Education</h6>
+                                    <p class="text-muted">University</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <h6>Secondary Education</h6>
+                                    <p class="text-muted">School</p>
+                                </div>
                             </div>
-                            <div class="col-6 mb-3">
-                                <h6>Most Viewed</h6>
-                                <p class="text-muted">Dolor sit amet</p>
-                            </div>
-                            </div>
-                            <div class="d-flex justify-content-start">
-                            <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
-                            <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
-                            <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </section>
 
-        
-        </div>
+                            <h6>Your Skills...</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                                <div class="col-6 mb-3">
+                                    <p class="text-muted">Competetive Programming</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <p class="text-muted">Data Analysis</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <p class="text-muted">Mobile Application</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <p class="text-muted">Web Development</p>
+                                </div>
+                            </div>
+
+                            <h6>Languages...</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                                <div class="col-6 mb-3">
+                                    <h6>Primary Language</h6>
+                                    <p class="text-muted">English</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <h6>Secondary Language</h6>
+                                    <p class="text-muted">Sinahala</p>
+                                </div>
+                            </div>
+
+                            <h6>Experience...</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                                <div class="col-6 mb-3">
+                                    <h6>1<sup>st</sup> Experience</h6>
+                                    <p class="text-muted">6 months in ABC company as machine learning engineer</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <h6>2<sup>nd</sup> Experience</h6>
+                                    <p class="text-muted">3 months in ABC company as Software Engineer</p>
+                                </div>
+                            </div>
+
+                            <h6>Volunteering...</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                                <div class="col-6 mb-3">
+                                    <h6>1<sup>st</sup> Volunteering</h6>
+                                    <p class="text-muted">Volunteering in IEEE Student Branch as the Vice Chair 2023</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <h6>2<sup>nd</sup> Volunteering</h6>
+                                    <p class="text-muted">Volunteering in IEEE Student Branch as designer 2022</p>
+                                </div>
+                            </div>
+
+                            <h6>Published Articles in DCS Community...</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row2">
+                                <div class="bio">
+                                    <p class="text-muted">How to make a CRUD Application using PHP and Frontend tools</p>
+                                </div>
+                                <div class="bio">
+                                    <p class="text-muted">Article on Node.js implementation</p>
+                                </div>
+                            </div>
+                        
+                        
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
     </div>
 
     <!-- javascript -->

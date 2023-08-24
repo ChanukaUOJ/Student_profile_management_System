@@ -176,6 +176,7 @@ a{
     height: 500px;
     /* background-color: rgb(230, 243, 255); */
     background: linear-gradient(135deg,rgb(230, 243, 255),rgb(205, 230, 255));
+    /* background-color: white; */
     padding: 20px;
     /* border-radius: 10px; */
     border-top-right-radius: 25px;
@@ -485,5 +486,13 @@ a{
 
 .profilecardwidth{
     width: 350px;
+    background: linear-gradient(135deg,rgb(230, 243, 255),rgb(205, 230, 255));
+    border: none;
+    box-shadow: 2px 2px 8px 0px #80adfa;
+}
+
+.profilecardwidth:hover{
+    cursor: pointer;
+    box-shadow: 2px 2px 8px 0px #176cff;
 }
 
