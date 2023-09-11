@@ -1,80 +1,129 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
-
-:root{
-    --body-color: rgb(214, 226, 241);
-}
-
-*{
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body{
-    height: 100vh;
-    background-color: var(--body-color);
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6rem;
-    color: #021129;
-}
-
-.container{
-    width: 100%;
-    padding: 50px 0;
-}
-
-.card{
-    position: relative;
-    width: 100%;
-    background-color: rgb(230, 243, 255);
-    /* background: linear-gradient(135deg,rgb(230, 243, 255),rgb(205, 230, 255)); */
-    /* background-color: white; */
-    padding: 20px;
-    box-shadow: 2px 2px 8px 0px #80adfa;
-    margin-bottom: 25px;
-}
-
-.card img{
-    width: 50%;
-    border-radius: 10px;
-}
-
-.card-title{
- 
-}
-
-.author_details{
-    width: 100%;
-    height: 30px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.author_image{
-
-}
-
-.author_regno{
-
-}
-
-.card-text{
-
-    width: 85%;
-}
-
-.description p{
-
-    overflow: hidden;
-    width: 100%;
-}
-
-.bottom_details{
-    width: 85%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+body{
+    background-color: #f1f1f1;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6rem;
+    color: #021129;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    position: relative;
+    width: 50%;
+    background-color: white;
+    height: 850px;
+    margin-top: 30px;
+    overflow: scroll;
+    overflow-y: auto;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 10px 0px #b3b3b3;
+    box-shadow: 2px 2px 10px 0px #b3b3b3;
+}
+
+.card-header{
+    margin-top: 50px;
+}
+
+.card-header h4{
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1.90rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-header hr{
+    width: 50%;
+}
+
+.author_details{
+    margin: 20px 0;
+    position: relative;
+    width: 200px;
+    align-items: center;
+}
+
+.author_details div{
+    display: inline;
+}
+
+.author_image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.author_regno{
+    padding-left: 15px;
+}
+
+.card-left{
+    margin-top: 20px;
+}
+
+.card-left img{
+    border-radius: 15px;
+}
+
+.card{
+    padding: 10px 60px;
+}
+
+.card-img-top{
+    width: 600px;
+}
+
+.cardbody{
+    margin-top: 20px;
+}
+
+.cardbody p{
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+.likebuttonbody{
+    position: fixed;
+    bottom: 70px;
+    right: 510px;
+    width: 70px;
+    background-color: rgb(255, 60, 60);
+    height: 30px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.likebuttonbody span{
+    padding-left: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.likebuttonbody i{
+    color: white;
+}
+
+.likebuttonbody:hover{
+    background-color: rgb(241, 21, 21);
+    transform: scale(1.050);
+    -webkit-box-shadow: 2px 2px 10px 0px #d8d8d8;
+    box-shadow: 2px 2px 10px 0px #d8d8d8;
+}
+
+.likebutton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px;
 }

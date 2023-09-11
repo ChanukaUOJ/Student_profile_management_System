@@ -1,0 +1,1341 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+
+body{
+    background-color: #f1f1f1;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6rem;
+    color: #010c1f;
+}
+
+a{
+    text-decoration: none;
+    color: #010c1f;
+}
+
+.sidebar{
+    position: fixed;
+    bottom: 0;
+    width: 300px;
+    height: 775px;
+    margin: 15px;
+    background-color: #ffffff;
+    z-index: 150;
+    border-radius: 25px;
+    border: 1.75px solid rgb(218, 218, 218);
+    -webkit-box-shadow: 1px 1px 3px 0px #cfcfcf;
+            box-shadow: 1px 1px 3px 0px #cfcfcf;
+}
+
+.sidebar.close{
+    width: 130px;
+    -webkit-transition: width 0.25s linear 0s;
+    -o-transition: width 0.25s linear 0s;
+    transition: width 0.25s linear 0s;
+}
+
+.menuicon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    text-align: end;
+    font-size: 25px;
+    padding: 20px 20px;
+}
+
+.menuicon:hover{
+    cursor: pointer;
+}
+
+.sidebar.close .menuicon{
+    /* padding: 0;
+    margin: 0; */
+    /* transform: rotate(90deg); */
+    position: absolute;
+    top: 0;
+    right: 30px;
+}
+
+.sidebar .text{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.sidebar.close span{
+    display: none;
+}
+
+.sidebar .image-text img{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.sidebar.close ~ .image-text img{
+    position: relative;
+    width: 10px;
+    height: 10px;
+}
+
+.name{
+    font-size: 20px;
+}
+
+.header-text{
+    text-align: center;
+}
+
+.menu-links{
+    margin-top: 40px;
+}
+
+.nav-link{
+    position: relative;
+    padding: 10px 10px 10px 15px;
+    /* margin-left: 10px; */
+    width: 100%;
+    /* border-radius: 10px; */
+    margin: 5px 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+} 
+
+.sidebar.close .nav-link{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50px;
+    margin: 10px 0px;
+}
+
+.sidebar.close .menu-links{
+    margin-top: 180px;
+}
+
+.sidebar.close .nav-link i{
+    padding: 15px 0px 15px 25px;
+}
+
+.nav-link:hover{
+    background-color: rgb(223, 223, 223);
+    padding-left: 25px;
+}
+
+.logout{
+    background-color: rgb(255, 231, 231);
+}
+
+.sidebar.close .nav-link:hover{
+    background-color: rgb(223, 223, 223);
+    padding-left: 15px;
+}
+
+.nav-link a span{
+    margin-left: 15px;
+}
+
+/* main-section */
+.mainbar{
+    position: relative;
+    width: calc(100% - 300px);
+    background-color: #f1f1f1;
+    float: right;
+    /* background-color: red; */
+}
+
+.sidebar.close ~ .mainbar{
+    position: absolute;
+    width: 100%;
+    padding-left: 150px;
+    -webkit-transition: width 0.25s linear 0s;
+    -o-transition: width 0.25s linear 0s;
+    transition: width 0.25s linear 0s;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    width: 98.5%;
+    height: 100px;
+    /* box-shadow: 2px 2px 8px 0px #80adfa; */
+    margin: 15px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    border: 1.75px solid rgb(218, 218, 218);
+    -webkit-box-shadow: 1px 1px 3px 0px #cfcfcf;
+            box-shadow: 1px 1px 3px 0px #cfcfcf;
+}
+
+.navbar div{
+    display: inline;
+}
+
+
+#logo{
+    position: absolute;
+    top: 10px;
+    left: 80px;
+    width: 500px;
+    height: auto;
+    float: left;
+}
+
+.screen_heading h1{
+    position: absolute;
+    top: 20px;
+    right: 80px;
+}
+
+.card-box{
+    position: absolute;
+    width: calc(100% - 300px);
+    padding: 50px;
+    display: -ms-grid;
+    display: grid;
+    /* grid-template-columns: 375px 375px 375px 375px; */
+    -ms-grid-columns: 200px 110px 200px 110px 200px 110px 200px 110px 200px;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    row-gap: 25px;
+    -webkit-column-gap: 110px;
+       -moz-column-gap: 110px;
+            column-gap: 110px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    z-index: 5;
+    padding-left: 50px;
+}
+
+.card-box .card{
+    position: relative;
+    width: 285px;
+    height: 440px;
+    /* background-color: rgb(230, 243, 255); */
+    /* background: linear-gradient(135deg,rgb(230, 243, 255),rgb(205, 230, 255)); */
+    /* background-color: white; */
+    border-radius: 15px;
+    /* border-top-right-radius: 25px; */
+    /* border-bottom-left-radius: 25px; */
+    /* box-shadow: 2px 2px 8px 0px #80adfa; */
+    -webkit-box-shadow: 2px 2px 10px 0px #b3b3b3;
+            box-shadow: 2px 2px 10px 0px #b3b3b3;
+    -webkit-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+}
+
+.card:hover{
+    -webkit-transform: scale(1.025);
+        -ms-transform: scale(1.025);
+            transform: scale(1.025);
+}
+
+.card-box .card img{
+    position: relative;
+    width: 100%;
+    height: 215px;
+    border-radius: 15px;
+}
+
+.card-body-filler{
+    position: absolute;
+    top: 200px;
+    background-color: rgb(244, 249, 255);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    width: 100%;
+    height: 30px;
+    -webkit-box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.226);
+            box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.226);
+}
+
+.card-body{
+    /* background-color: rgb(244, 249, 255); */
+    /* background: linear-gradient(180deg,white, rgb(233, 243, 255),rgb(205, 230, 255)); */
+    width: 100%;
+    /* border-radius: 10px; */
+}
+
+.card-title{
+    position: absolute;
+    /* top: 225px;
+    left: 25px; */
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.author_details{
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top: 285px;
+    /* left: 35px;  */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 10px;
+}
+
+.author_image{
+    position: absolute;
+    left: 0;
+}
+
+.author_regno{
+    position: absolute;
+    left: 40px;
+}
+
+.card-text{
+    position: absolute;
+    top: 322px;
+    width: 85%;
+    font-size: 14px;
+    line-height: 1.1rem;
+    color: #414141;
+}
+
+/* .description p{
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    font-size: 16px;
+} */
+
+.bottom_details{
+    width: 70px;
+    height: 50px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    display: inline;
+    /* background-color: rgb(247, 51, 51); */
+}
+
+.bottom_details p{
+    float: right;
+    margin-top: 15px;
+    margin-right: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.postarticle{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: auto;
+}
+
+.postarticle a{
+    position: fixed;
+    font-size: 60px;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0px 50px 50px 0px;
+}
+
+.fa-circle-plus{
+    color: rgb(54, 211, 119);
+    text-align: end;
+    -webkit-box-shadow: 3px 3px 5px 0 rgb(179, 179, 179);
+            box-shadow: 3px 3px 5px 0 rgb(179, 179, 179);
+    border-radius: 50%;
+}
+
+.likebuttonbody{
+    position: absolute;
+    right: 50px;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 15px;
+    float: left;
+    /* box-shadow: 5px 5px 10px 0 rgb(255, 222, 222); */
+}
+
+.fa-thumbs-up{
+    color: rgb(247, 51, 51);
+    font-size: 20px;
+}
+
+.readmorebutton{
+    position: absolute;
+    bottom: 7px;
+    left: 15px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.readmorebutton:hover{
+    background-color: #c2c2c2;
+    
+}
+
+/* search for a student */
+
+/* .studentdatabase{
+    background-color: #f1f1f1;
+    width: calc(100% - 300px);
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: red;
+} */
+
+.findastudent{
+    margin-top: 200px;
+    z-index: 1;
+    background-color: #f1f1f1;
+}
+
+.findastudentheading{
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 40px;
+    margin-top: 200px;
+}
+
+.searchbar{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 30px;
+}
+
+.searchbaritems{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.searchbaritems i{
+    font-size: 30px;
+    margin-left: 15px;
+}
+
+.studentdatabase{
+    position: relative;
+}
+
+.level-1-grid{
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    z-index: 0;
+    width: 100%;
+    padding: 50px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 110px 110px 110px 110px 110px 110px 110px 110px 110px 110px 110px;
+    grid-template-columns: 110px 110px 110px 110px 110px 110px 110px;
+    row-gap: 25px;
+    -webkit-column-gap: 110px;
+       -moz-column-gap: 110px;
+            column-gap: 110px;
+    margin-top: 150px;
+    /* overflow: auto;
+    height: 100vh;
+    z-index: 5; */
+}
+
+.searchstudentgrid{
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 350px 350px 350px 350px;
+    grid-template-columns: 350px 350px 350px 350px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 50px;
+}
+
+.studentlevel{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    overflow: hidden;
+    /* box-shadow: 2px 2px 8px 0px #80adfa; */
+    border: 1.75px solid rgb(218, 218, 218);
+    -webkit-box-shadow: 1px 1px 3px 0px #cfcfcf;
+            box-shadow: 1px 1px 3px 0px #cfcfcf;
+}
+
+.studentlevel:hover{
+    background-color: rgb(98, 153, 255);
+    cursor: pointer;
+    -webkit-box-shadow: 2px 2px 8px 0px #80adfa;
+            box-shadow: 2px 2px 8px 0px #80adfa;
+    -webkit-transform: scale(1.02);
+        -ms-transform: scale(1.02);
+            transform: scale(1.02);
+}
+
+.level-text{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    /* background: linear-gradient(rgb(88, 143, 245),rgb(44, 106, 221),rgb(25, 81, 184)); */
+    background-color: #E5ECF6;;
+}
+
+.level-text p{
+    margin-top: 12px;
+    font-size: 30px;
+    font-weight: 600;
+    
+}
+
+.levelimage img{
+    width: 300px;
+}
+
+.profilebutton{
+    margin-top: 10px;
+}
+
+.studentdatabase{
+    width: calc(100% - 300px);
+    height: 100px;
+}
+
+/* addform */
+.postarticleform, .feedbackform{
+    width: 600px;
+    border-radius: 10px;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+    background-color: white;
+    padding: 25px 30px;
+    -webkit-box-shadow: 2px 2px 8px 0px #80adfa;
+            box-shadow: 2px 2px 8px 0px #80adfa;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    -webkit-box-shadow: 1px 1px 3px 0px #cfcfcf;
+            box-shadow: 1px 1px 3px 0px #cfcfcf;
+}
+
+.updatedetails{
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+    background-color: white;
+    padding: 25px 30px;
+    -webkit-box-shadow: 2px 2px 8px 0px #80adfa;
+            box-shadow: 2px 2px 8px 0px #80adfa;
+    z-index: 15;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    height: 800px;
+    overflow: auto;
+    overflow-y: scroll;
+    -webkit-box-shadow: 1px 1px 3px 0px #cfcfcf;
+            box-shadow: 1px 1px 3px 0px #cfcfcf;
+}
+
+.addpostclosebutton{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+.addpostclosebutton i{
+    font-size: 25px;
+    text-align: right;
+}
+
+.addpostclosebutton i:hover{
+    color: rgb(247, 51, 51);
+    cursor: pointer;
+}
+
+.addposttitle h1{
+    position: relative;
+    text-align: center;
+    font-weight: bold;
+    margin: 40px 0px 20px 0px;
+}
+
+.containerdashboard#blur.active{
+    -webkit-filter: blur(20px);
+            filter: blur(20px);
+}
+
+.postbutton{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 40px;
+}
+
+.postbutton button{
+    padding: 10px 20px;
+    border: none;
+}
+
+.postbutton button:hover{
+    background-color: rgb(60, 187, 77);
+    border: none;
+}
+
+
+#postarticleform.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+
+#feedbackform.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+#updatedetails.active{
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.postcard{
+    width: 90%;
+    height: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* background: linear-gradient(135deg,rgb(230, 243, 255),rgb(205, 230, 255)); */
+    background-color: white;
+    -webkit-box-shadow: 1px 1px 3px 0px #cfcfcf;
+            box-shadow: 1px 1px 3px 0px #cfcfcf;
+    border-radius: 10px;
+}
+
+.postcard{
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.postcardimage img{
+    width: 80px;
+    height: 80px;
+}
+
+.postcardleft{
+    position: absolute;
+    left:180px;
+    border-left: 1px solid rgb(104, 104, 104);
+    padding-left: 40px;
+    /* background-color: red; */
+}
+
+.postcardleft h4{
+    display: inline;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.postcardleft h5{
+    color: #3f3f3f;
+    font-size: 14px;
+}
+
+.postcardright{
+    position: absolute;
+    right: 40px;
+}
+
+.postcardright div{
+    display: inline;
+}
+
+.postcardright div a{
+    font-size: 20px;
+    margin: 0 5px;
+}
+
+.postcardimage{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: absolute;
+    left: 40px;
+    width: 100px;
+    height: 100px;
+    /* border-radius: 50%; */
+    /* background-color: red; */
+}
+
+.postcardedit i{
+    color: #3f3f3f;
+}
+
+.postcardremove i{
+    color: rgb(253, 60, 60);
+}
+
+.postcardedit i:hover{
+    color: #141414;
+}
+
+.postcardremove i:hover{
+    color: rgb(228, 0, 0);
+}
+
+/* newcard */
+
+.newcard{
+    position: relative;
+    width: 200px;
+    height: 300px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1.75px solid rgb(218, 218, 218);
+    -webkit-box-shadow: 1px 1px 3px 0px #cfcfcf;
+            box-shadow: 1px 1px 3px 0px #cfcfcf;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.newcard:hover{
+    -webkit-transform: scale(1.025);
+        -ms-transform: scale(1.025);
+            transform: scale(1.025);
+    -webkit-box-shadow: 1px 1px 3px 0px #cfcfcf;
+            box-shadow: 1px 1px 3px 0px #cfcfcf;
+}
+
+.newImage img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.newcardfullname{
+    margin-top: 10px;
+}
+
+.newcardfirstname h3{
+    font-size: 20px;
+    line-height: 0.5px;
+    font-weight: 600;
+}
+
+.newcardreg h5{
+    color: rgb(68, 68, 68);
+}
+
+.newcardlastname h3{
+    font-size: 20px;
+}
+
+.newcardreg h5{
+    font-size: 15px;
+}
+
+.newcardbottom{
+    position: relative;
+    margin-top: 0px;
+}
+
+.newcardbottombox{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.newcardbottom div{
+    display: inline;
+    
+}
+
+.newcardbottombox a{
+    padding: 5px 10px;
+    border: 1.75px solid rgb(218, 218, 218);
+    margin: 0px 2px;
+    border-radius: 5px;
+}
+
+.viewprofilebottom{
+    position: relative;
+    width: 35%;
+}
+
+.viewprofilebottom a{
+    position: relative;
+    bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 15px;
+    padding: 3px 2px;
+    border-radius: 5px;
+    background-color: rgb(189, 234, 255);
+}
+
+.viewprofilebottom a:hover{
+   background-color: rgb(152, 222, 255);
+}
+
+.linksocial a:hover{
+    background-color: rgb(152, 222, 255);
+    border: 0.25 solid rgb(152, 222, 255);
+}
+
+/* mediaqueries */
+@media (max-width: 600px) {
+
+    .navbar{
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        margin: 0;
+        border-radius: 0px;
+        box-shadow: none;
+    }
+
+    .card-box{
+        display: block;
+    }
+
+    .card-box .card {
+        margin-top: 25px;
+    }
+
+    .sidebar{
+        width: 200px;
+    }
+
+    .mainbar{
+        width: calc(100% - 200px);
+    }
+
+    .sidebar .image-text img{
+        width: 100px;
+        height: 100px;
+    }
+    
+    .sidebar.close ~ .image-text img{
+        width: 10px;
+    }
+
+    #logo{
+        width: 250px;
+        background-color: red;
+        position: fixed;
+        left: 30px;
+        top: 20px;
+    }
+
+    #logo img{
+        position: absolute;
+        top: 10px;
+        left: 0px;
+        width: 200px;
+        height: auto;
+        float: left;
+    }
+    
+    .screen_heading h1{
+        position: absolute;
+        font-size: 20px;
+        top: 35px;
+        right: 30px;
+    }
+
+    .level-1-grid{
+        position: absolute;
+        top: 0;
+        left: 110px;
+        -ms-grid-columns: 110px 110px;
+        grid-template-columns: 110px 110px;
+        row-gap: 25px;
+        -webkit-column-gap: 110px;
+           -moz-column-gap: 110px;
+                column-gap: 110px;
+        margin-top: 400px;
+        /* overflow: auto;
+        height: 100vh;
+        z-index: 5; */
+    }
+
+    .findastudentheading{
+        font-size: 30px;
+    }
+
+    .searchstudentgrid{
+        -ms-grid-columns: 350px;
+        grid-template-columns: 350px;
+    }
+
+    
+    .studentlevel{
+        margin-top: 30px;
+    }
+
+    .postcard{
+        width: 95%;
+    }
+
+    .postcardimage{
+        position: absolute;
+        left: 5px;
+
+    }
+
+    .postcardimage img{
+        width: 70px;
+        height: 70px;
+    }
+
+    .postcardleft{
+        left: 110px;
+    }
+
+    .postcardleft h4{
+        font-size: 15px;
+    }
+
+    .postcardright{
+        right: 8px;
+        bottom: 8px;
+    }
+
+    .postcardright i{
+        font-size: 15px;
+    }
+
+    .updatedetails{
+        width: 90%;
+    }
+
+    .sidebar{
+        position: fixed;
+        top: 100px;
+        width: 100%;
+        height: 80px;
+    }
+
+    .sidebar.close{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        border-radius: 0px;
+        box-shadow: none;
+    }
+
+    .menuicon{
+        display: none;
+    }
+
+    .menu-links{
+        position: fixed;
+        display: flex;
+        top: -60px;
+        /* background-color: red; */
+        width: 100%;
+    }
+
+    .menu-bar .nav-link{
+        display: inline;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-link:hover{
+        padding: 0;
+        margin: 0;
+        background-color: none;
+    }
+
+    .nav-link i{
+        padding: 0;
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .sidebar.close .nav-link:hover{
+        background-color: white;
+        padding-left: 0px;
+    }
+
+    .logout{
+        background-color: rgb(255, 255, 255);
+    }
+
+    .sidebar.close ~ .mainbar{
+        position: relative;
+        left: 0;
+    }
+
+    .card-box, .findastudent, .level1mainbox, .level-1-grid, .findastudentheading, .articledashboard{
+        position: absolute;
+        /* left: -200px; */
+        left: 0;
+        width: 100%;
+        /* background-color: red; */
+        margin-top: 200px;
+        padding: 0;
+    }
+
+    .card{
+        position: relative;
+        width: 100%;
+    }
+
+    .feedbackform,.postarticleform{
+        width: 90%;
+    }
+
+    .findastudent{
+        margin-top: 230px;
+    }
+
+    .level1mainbox{
+        margin-top: 0;
+    }
+
+    .articledashboard{
+        margin-top: 230px;
+    }
+
+    .level-1-grid{
+        margin-top: 370px;
+        margin-left: 13px;
+    }
+
+    .menu-links{
+        margin-top: 60px;
+    }
+    
+    .nav-link{
+        position: relative;
+        padding: 0px;
+        /* margin-left: 10px; */
+        width: 100%;
+        /* border-radius: 10px; */
+        margin: 5px 0px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    } 
+    
+    .sidebar.close .nav-link{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 50px;
+        margin: 10px 0px;
+    }
+    
+    .sidebar.close .menu-links{
+        margin-top: 175px;
+    }
+    
+    .sidebar.close .nav-link i{
+        padding: 0;
+    }
+
+    .logout{
+        background-color: none;
+    }
+    
+    .sidebar.close .nav-link:hover a{
+        background-color: none;
+        padding-left: 0px;
+    }
+    
+    .nav-link a span{
+        margin-left: 0px;
+    }
+
+
+
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .navbar{
+        position: fixed;
+        top: 0px;
+        border-radius: none;
+        width: 97%;
+        margin-left: 30px;
+    }
+
+    .card-box .card {
+        margin-top: 25px;
+    }
+
+    .sidebar{
+        width: 200px;
+    }
+
+    .mainbar{
+        width: calc(100% - 200px);
+    }
+
+    .sidebar .image-text img{
+        width: 100px;
+        height: 100px;
+    }
+    
+    .sidebar.close ~ .image-text img{
+        width: 10px;
+    }
+
+    #logo{
+        width: 350px;
+        background-color: red;
+        position: fixed;
+        left: 30px;
+        top: 28px;
+    }
+
+    #logo img{
+        position: absolute;
+        top: 3px;
+        left: 10px;
+        width: 350px;
+        height: auto;
+    }
+    
+    .screen_heading h1{
+        position: absolute;
+        font-size: 30px;
+        top: 30px;
+        right: 40px;
+    }
+
+    .card-box{
+        /* grid-template-columns: 375px 375px 375px 375px; */
+        -ms-grid-columns: 200px 200px;
+        grid-template-columns: 200px 200px;
+    }
+
+    .level-1-grid{
+        position: absolute;
+        top: 0;
+        left: 110px;
+        -ms-grid-columns: 110px 110px 110px;
+        grid-template-columns: 110px 110px 110px;
+        row-gap: 25px;
+        -webkit-column-gap: 110px;
+           -moz-column-gap: 110px;
+                column-gap: 110px;
+        margin-top: 350px;
+        /* overflow: auto;
+        height: 100vh;
+        z-index: 5; */
+    }
+
+    .findastudentheading{
+        font-size: 40px;
+    }
+
+    .searchstudentgrid{
+        -ms-grid-columns: 350px 350px;
+        grid-template-columns: 350px 350px;
+    }
+
+    
+    .studentlevel{
+        margin-top: 30px;
+    }
+
+    .postcardright{
+        right: 8px;
+        bottom: 8px;
+    }
+
+    .postcardright i{
+        font-size: 15px;
+    }
+
+    .updatedetails{
+        width: 90%;
+    }
+
+}
+
+@media (min-width: 1025px) and (max-width: 1300px) {
+    
+    .card-box{
+        /* grid-template-columns: 375px 375px 375px 375px; */
+        -ms-grid-columns: 200px 200px 200px;
+        grid-template-columns: 200px 200px 200px;
+    }
+
+    .level-1-grid{
+        position: absolute;
+        top: 0;
+        left: 110px;
+        -ms-grid-columns: 110px 110px 110px 110px 110px;
+        grid-template-columns: 110px 110px 110px 110px 110px;
+        row-gap: 25px;
+        -webkit-column-gap: 110px;
+           -moz-column-gap: 110px;
+                column-gap: 110px;
+        margin-top: 350px;
+        /* overflow: auto;
+        height: 100vh;
+        z-index: 5; */
+    }
+
+    .findastudentheading{
+        font-size: 40px;
+    }
+
+    .searchstudentgrid{
+        -ms-grid-columns: 350px 350px 350px;
+        grid-template-columns: 350px 350px 350px;
+    }
+
+    
+    .studentlevel{
+        margin-top: 30px;
+    }
+
+    .postcardright{
+        right: 8px;
+        bottom: 8px;
+    }
+
+    .postcardright i{
+        font-size: 20px;
+    }
+
+    .updatedetails{
+        width: 90%;
+    }
+
+}
+
+@media (min-width: 1301px) and (max-width: 1500px) {
+    
+    .card-box{
+        /* grid-template-columns: 375px 375px 375px 375px; */
+        -ms-grid-columns: 200px 200px 200px 200px;
+        grid-template-columns: 200px 200px 200px 200px;
+    }
+
+    .level-1-grid{
+        position: absolute;
+        top: 0;
+        left: 110px;
+        -ms-grid-columns: 110px 110px 110px 110px 110px;
+        grid-template-columns: 110px 110px 110px 110px 110px;
+        row-gap: 25px;
+        -webkit-column-gap: 110px;
+           -moz-column-gap: 110px;
+                column-gap: 110px;
+        margin-top: 350px;
+        /* overflow: auto;
+        height: 100vh;
+        z-index: 5; */
+    }
+
+    .findastudentheading{
+        font-size: 40px;
+    }
+
+    .searchstudentgrid{
+        -ms-grid-columns: 350px 350px 350px 350px;
+        grid-template-columns: 350px 350px 350px;
+    }
+
+    
+    .studentlevel{
+        margin-top: 30px;
+    }
+
+
+}

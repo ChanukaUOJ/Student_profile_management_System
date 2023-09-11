@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(255, 241, 248);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6rem;
+    color: rgb(19, 1, 10);
+}
+
+a{
+    color: rgb(189, 51, 120);
+    text-decoration: none;
+}
+
+.toScreens{
+    color: rgb(189, 51, 120);
+    text-decoration: none;
+}
+
+/* login */
+/* .register_box{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    box-shadow: 0px 0px 8px 0px #a4b8db;
+    border-radius: 10px;
+    background-color: #E5ECF6;
+    transition: 0.5s;
+} */
+
+.register_box_login{
+    margin-top: 150px;
+}
+
+.register_box_right{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30%;
+    height: auto;
+    float: right;
+    background-color: rgb(255, 255, 255);
+    padding:  30px 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 2px rgb(255, 198, 226);
+    border-radius: 10px;
+    /* background-color: #E5ECF6; */
+    /* border-radius: 10px; */
+    /* box-shadow: 0px 0px 8px 0px #80adfa; */
+}
+
+.register_box_right:hover{
+    box-shadow: 0px 0px 15px 1px rgb(255, 168, 210);
+}
+
+.logout{
+    background-color: rgb(255, 198, 226);
+}
+
+form{
+    margin-top: 45px;
+
+}
+
+.input-group-text{
+    border-radius: none;
+    margin-right: 10px;
+    background-color: #E5ECF6;
+    border: none;
+}
+
+.input-group-text i{
+    width: 40px;
+    padding: 15px 0;
+}
+
+.form-control{
+    padding: 0px 15px;
+    border-radius: 5px;
+}
+
+.form-control::placeholder{
+    color: #959BA5;
+}
+
+.btn{
+    width:  100%;
+    padding: 10px;
+    margin-top: 25px;
+    background-color: rgb(202, 65, 133);
+    color: white;
+    border: none;
+}
+
+.btn:hover{
+    background-color: rgb(189, 51, 120);
+}
+
+.insidehead{
+    font-weight: 100;
+    font-size: 35px;
+}
+
+.form-floating input:focus {
+    border: 1.5px solid rgb(189, 51, 120);
+    box-shadow: 0px 0px 5px 0px rgb(255, 168, 210);
+}
+
+@media (max-width: 600px) {
+    .register_box_right{
+        width: 90%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .register_box_right{
+        width: 75%;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1300px) {
+    .register_box_right{
+        width: 50%;
+    }
+}
+
+@media (min-width: 1301px) and (max-width: 1500px) {
+    
+}

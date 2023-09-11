@@ -1,3 +1,31 @@
+<?php
+session_start();
+if(!isset($_SESSION['regno'])){
+	header("Location: ../index.php");
+}
+
+include("../connection.php");
+$staff_student_id = $_SESSION['regno'];
+$query = "SELECT first_name,last_name,email FROM staff_student_user_details WHERE staff_student_id = '$staff_student_id'";
+$result = mysqli_query($con, $query);
+$numOfrows = mysqli_num_rows($result);
+if ($numOfrows == 1) {
+    $row = mysqli_fetch_assoc($result);
+    $firstname = $row['first_name'];
+    $lastname = $row['last_name'];
+    $email = $row['email'];
+    $_SESSION['firstname'] = $firstname;
+    $_SESSION['lastname'] = $lastname;
+    $_SESSION['email'] = $email;
+
+} else {
+    // echo "Wrong connection!";
+}
+
+$query_unlock = "UPDATE identity_verification_staff_student SET unsuccessful_verification_attempt = 0  WHERE staff_student_id='$staff_student_id'";
+mysqli_query($con,$query_unlock);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,1575 +34,687 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script defer src="https://kit.fontawesome.com/5868934a40.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/dashboards.css">
+    <link rel="stylesheet" href="../css/copy.css?=<?php echo time() ?>">
     <title>DCS Forum</title>
 </head>
 <body>
 
     <div class="containerdashboard" id="blur">
+        
+    <div class="filler" style="background-color: #f1f1f1; width:100%; height: 50px; position: fixed; top: 0; left: 0; z-index: 50;"></div>
+
+
+            <!-- top navbar -->
+            <div class="navbar">
+                <div class="container">
+                    <div id="logo">
+                        <img src="https://www.csc.jfn.ac.lk/wp-content/uploads/2017/02/logo_new.png" alt="">
+                    </div>
+            
+                    <div class="screen_heading" style="">
+                        <h1 style="font-weight: bold;"><?php if(isset($_GET['findStudent'])){echo "Student Portal";}else if(isset($_GET['yourArticles'])){echo "Articles View";}else{echo "DCS Community";} ?></h1>
+                    </div>
+                </div>
+            </div>
+            <!-- top navbar -->
+
         <!-- sidebar -->
-        <nav class="sidebar">
-            <header>
-                <div class="menuicon"><i class="fa-solid fa-bars"></i></div>
+        
+        <nav class="sidebar close">
+            <header >
+                <div class="menuicon" onclick="sidebareffect()"><i class="fa-solid fa-bars"></i></div>
                 <div class="image-text">
                     <span class="image">
-                        <img src="../images/background.jpg" alt="">
+                    
+<?php
+
+$staff_student_id = $_SESSION['regno'];
+$query_profile = "SELECT staff_student_profile_image_path FROM student_profile WHERE staff_student_id = '$staff_student_id'";
+$result_profile = mysqli_query($con, $query_profile);
+$row_profile = mysqli_fetch_assoc($result_profile);
+$numOfrows_profile = mysqli_num_rows($result_profile);
+if ($numOfrows_profile == 1) {
+    ?>
+        <img src="../profile/<?php echo $row_profile['staff_student_profile_image_path']; ?>" alt="">
+    
+        <?php
+} else {
+    ?>
+        <img src="../images/background.jpg" alt="">
+        <?php
+}
+?>                
                     </span>
 
                     <div class="text header-text">
-                        <span class="name">PDCC Ranathunga</span><br>
-                        <span class="regno">2020/CSC/038</span>
+                        <span class="name"><?php echo $firstname . " "; ?></span><span class="name"><?php echo $lastname; ?></span><br>
+                        <span class="regno"><?php echo $_SESSION['regno']; ?></span>
                     </div>
                 </div>
 
             </header>
 
             <div class="menu-bar">
-                <div class="menu">
-                    <ul class="menu-links">
-                        <li class="nav-link">
-                            <a href="#">
-                                <i class="fa-solid fa-copy"></i>
-                                <span>DCS Community</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="#findastudent">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                                <span>Find a Student</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="#">
-                                <i class="fa-solid fa-newspaper"></i>
-                                <span>your Articles</span>
-                            </a>
-                        </li>
-                        <li class="nav-link" onclick="feedbacktoggle()">
-                            <a href="#">
-                                <i class="fa-solid fa-comments"></i>
-                                <span>Feedback</span>
-                            </a>
-                        </li>
-                        <li class="nav-link" onclick="updatetoggle()">
-                            <a href="#">
-                                <i class="fa-solid fa-gear"></i>
-                                <span>Update Profile</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="#">
-                                <i class="fa-regular fa-file-lines"></i>
-                                <span>View Your Profile</span>
-                            </a>
-                        </li>
-                        <li class="nav-link logout">
-                            <a href="#">
-                                <i class="fa-solid fa-power-off"></i>
-                                <span>Logout</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="?dcs_community=#">
+                            <i class="fa-solid fa-copy"></i>
+                            <span>DCS Community</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="?findStudent=#">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>Find a Student</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="?yourArticles=#">
+                            <i class="fa-solid fa-newspaper"></i>
+                            <span>your Articles</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link" onclick="feedbacktoggle()">
+                        <a href="#">
+                            <i class="fa-solid fa-comments"></i>
+                            <span>Feedback</span>
+                        </a>
+                    </li>
+    
+                    <li class="nav-link" onclick="updatetoggle()">
+                        <a href="#">
+                            <i class="fa-solid fa-gear"></i>
+                            <span>Update Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="editprofile.php" target="_blank">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span>Edit Profile</span>
+                        </a>
+                    </li>
+            
+                    <li class="nav-link">
+                        <a href="showprofile.php" target="_blank">
+                            <i class="fa-regular fa-file-lines"></i>
+                            <span>View Your Profile</span>
+                        </a>
+                    </li>
+            
+                    <li class="nav-link logout">
+                        <a href="../logout.php">
+                            <i class="fa-solid fa-power-off"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </nav>
         <!-- sidebar -->
 
         <div class="mainbar">
 
-            <!-- top navbar -->
-            <div id="navbar">
-                <div class="container">
-                    <div id="logo">
-                        <img src="https://www.csc.jfn.ac.lk/wp-content/uploads/2017/02/logo_new.png" alt="">
-                    </div>
             
-                    <div class="screen_heading" style="display: flex; left: 0;">
-                        <h1 style="font-weight: bold;">DCS Community</h1>
-                    </div>
-                </div>
-            </div>
-            <!-- top navbar -->
+<?php
+if (isset($_GET['yourArticles'])) {
+    yourArticles();
+} else if (isset($_GET['findStudent'])) {
+    findStudent();
+} else if (isset($_GET['dcs_community'])) {
+    dcs_community();
+} else if (isset($_GET['level1'])) {
+    level1();
+} else if (isset($_GET['level2'])) {
+    level2();
+} else if (isset($_GET['level3'])) {
+    level3();
+} else if (isset($_GET['level4'])) {
+    level4();
+} else {
+    dcs_community();
+}
+?>
+<?php
 
-            <!-- DCS Community -->
-            <div class="card-box">
+function dcs_community()
+{
+    include("../connection.php");
+    $postInformation = "SELECT staff_student_id,post_id,post_image_path,post_title,post_description,post_like FROM post";
+    $result_postInformation = mysqli_query($con, $postInformation);
+	
+    ?>        <!-- DCS Community -->
+                <div class="card-box">
+                <?php
+                $i = 0;
+                while ($row_postInformation = mysqli_fetch_assoc($result_postInformation)) {
+					
+					//USER IMAGE VIEW
+					$staff_student_id = $row_postInformation['staff_student_id'];
+					$query_profile = "SELECT staff_student_profile_image_path FROM student_profile WHERE staff_student_id = '$staff_student_id'";
+					$result_profile = mysqli_query($con, $query_profile);
+					$row_profile = mysqli_fetch_assoc($result_profile);
 
-                <!-- card 1 dummy -->
-                <div class="card">
-                    <img class="card-img-top" src="https://img.freepik.com/free-photo/female-hand-typing-keyboard-laptop_1150-15742.jpg?w=1380&t=st=1692617534~exp=1692618134~hmac=2ced647283aa295a675e4e782484fa5908e59afb4436c53a1e0af77832f054ed" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">How to create a login forum using php</h4>
-                        <div class="author_details">
-                            <div class="author_image">
-                                <img src="../images/background.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </div>
-                            <div class="author_regno">
-                                2020/csc/038
-                            </div>
+                    ?>
+                        <!-- card 1 dummy -->
+                        <div class="card">
+                            <img class="card-img-top" src="../uploads/<?php echo $row_postInformation['post_image_path']; ?>" alt="Card image cap">
+                            <!-- <div class="card-body-filler"></div> -->
+                            <div class="card-body">
+                                <h4 class="card-title"><?php echo substr($row_postInformation['post_title'], 0, 39) . ".."; ?></h4>
+                                <div class="author_details">
+                                    <div class="author_image">
+                                        <img src="../profile/<?php echo $row_profile['staff_student_profile_image_path']; ?>" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
+                                    </div>
+                                    <div class="author_regno">
+                                        <?php echo $row_postInformation['staff_student_id']; ?>
+                                    </div>
 
-                        </div>
-                        <p class="card-text">Lorem ipsum dolor sit amet con secte tur, adipisicing elit. a </p>
-                        <div class="bottom_details">
-                            <!-- <img src="../images/background.jpg" alt=""> -->
-                            <a href="articleview.php" class="btn btn-primary" target="_blank">Read</a>
-                            <div class="likebuttonbody">
-                                <div  class="likebutton"><a href="#"><i class="fa-solid fa-thumbs-up"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- card 2 dummy -->
-                <div class="card">
-                    <img class="card-img-top" src="https://img.freepik.com/free-photo/3d-render-code-testing-functional-test-usability_107791-16607.jpg?w=1480&t=st=1692662917~exp=1692663517~hmac=6762cfa35762433e767915865dac9d6ad4aeb056d59feea8669d1f0a3be2566e" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Ethical Hacking</h4>
-                        <div class="author_details">
-                            <div class="author_image">
-                                <img src="../images/background.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </div>
-                            <div class="author_regno">
-                                2020/csc/038
-                            </div>
-
-                        </div>
-                        <p class="card-text">Lorem ipsum dolor sit amet con secte tur, adipisicing elit. a </p>
-                        <div class="bottom_details">
-                            <!-- <img src="../images/background.jpg" alt=""> -->
-                            <a href="#" class="btn btn-primary">View More</a>
-                            <div class="likebuttonbody">
-                                <div  class="likebutton"><a href="#"><i class="fa-solid fa-thumbs-up"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- card 3 dummy -->
-                <div class="card">
-                    <img class="card-img-top" src="https://img.freepik.com/free-vector/desktop-computer-vconcept-illustration_114360-12153.jpg?t=st=1692662914~exp=1692663514~hmac=bf11af31f09a4512f2b7bee082344f3c3c32e93c601636e72e31d1238e1529c5" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">How to make a web site</h4>
-                        <div class="author_details">
-                            <div class="author_image">
-                                <img src="../images/background.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </div>
-                            <div class="author_regno">
-                                2020/csc/038
-                            </div>
-
-                        </div>
-                        <p class="card-text">Lorem ipsum dolor sit amet con secte tur, adipisicing elit. a </p>
-                        <div class="bottom_details">
-                            <!-- <img src="../images/background.jpg" alt=""> -->
-                            <a href="#" class="btn btn-primary">View More</a>
-                            <div class="likebuttonbody">
-                                <div  class="likebutton"><a href="#"><i class="fa-solid fa-thumbs-up"></i></a></div>
+                                </div>
+                                <p class="card-text"><?php echo substr($row_postInformation['post_description'], 0, 100) . ".."; ?></p>
+                                <div class="bottom_details">
+                                    <!-- <img src="../images/background.jpg" alt=""> -->
+                                    <div class="likebuttonbody">
+                                        <div  class="likebutton"><a href="postLike.php?post_id=<?php echo $row_postInformation['post_id'];?>"><i class="fa-solid fa-thumbs-up"></i></a></div>
+                                    </div>
+                                    <p><?php echo $row_postInformation['post_like'];?></p>
+                                </div>
+                                <a class="readmorebutton" href="articleview.php?post_id=<?php echo $row_postInformation['post_id'];?>" target="_blank">Read more...</a>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- card 4 dummy -->
-                <div class="card">
-                    <img class="card-img-top" src="https://img.freepik.com/free-photo/black-man-helping-colleague_23-2147808186.jpg?w=1380&t=st=1692662957~exp=1692663557~hmac=c40e31df1d516780f53f9d9aaefe8ff80e225bb58e4fdc2a3f2f704292cc1911" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Implement Node.js System</h4>
-                        <div class="author_details">
-                            <div class="author_image">
-                                <img src="../images/background.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </div>
-                            <div class="author_regno">
-                                2020/csc/038
-                            </div>
-
-                        </div>
-                        <p class="card-text">Lorem ipsum dolor sit amet con secte tur, adipisicing elit. a </p>
-                        <div class="bottom_details">
-                            <!-- <img src="../images/background.jpg" alt=""> -->
-                            <a href="#" class="btn btn-primary">View More</a>
-                            <div class="likebuttonbody">
-                                <div  class="likebutton"><a href="#"><i class="fa-solid fa-thumbs-up"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- card 5 dummy -->
-                <div class="card">
-                    <img class="card-img-top" src="https://img.freepik.com/free-vector/colorful-business-landing-page_52683-988.jpg?w=740&t=st=1692662977~exp=1692663577~hmac=4866d31eee5535c18a49d1133f52325e11cc77f327b015ad348106cdd7edcfb0" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">How the backend works?</h4>
-                        <div class="author_details">
-                            <div class="author_image">
-                                <img src="../images/background.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </div>
-                            <div class="author_regno">
-                                2020/csc/038
-                            </div>
-
-                        </div>
-                        <p class="card-text">Lorem ipsum dolor sit amet con secte tur, adipisicing elit. a </p>
-                        <div class="bottom_details">
-                            <!-- <img src="../images/background.jpg" alt=""> -->
-                            <a href="#" class="btn btn-primary">View More</a>
-                            <div class="likebuttonbody">
-                                <div  class="likebutton"><a href="#"><i class="fa-solid fa-thumbs-up"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- card 6 dummy -->
-                <div class="card">
-                    <img class="card-img-top" src="https://img.freepik.com/free-photo/close-up-male-hands-using-laptop-home_1150-790.jpg?w=1380&t=st=1692662995~exp=1692663595~hmac=bf3ee29aed21aae2116027f444e487a84b5c5d663b67ceafc395eab1376d74db" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">How to create a login forum using php</h4>
-                        <div class="author_details">
-                            <div class="author_image">
-                                <img src="../images/background.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </div>
-                            <div class="author_regno">
-                                2020/csc/038
-                            </div>
-
-                        </div>
-                        <p class="card-text">Lorem ipsum dolor sit amet con secte tur, adipisicing elit. a </p>
-                        <div class="bottom_details">
-                            <!-- <img src="../images/background.jpg" alt=""> -->
-                            <a href="#" class="btn btn-primary">View More</a>
-                            <div class="likebuttonbody">
-                                <div  class="likebutton"><a href="#"><i class="fa-solid fa-thumbs-up"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- card 7 dummy -->
-                <div class="card">
-                    <img class="card-img-top" src="https://img.freepik.com/free-psd/computer-mockup_1310-706.jpg?w=1380&t=st=1692663024~exp=1692663624~hmac=b73077f35ef3503162256cf05b2c5b7fc854fd7ce31a9657e67751da9bacc2eb" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Only money free</h4>
-                        <div class="author_details">
-                            <div class="author_image">
-                                <img src="../images/background.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </div>
-                            <div class="author_regno">
-                                2020/csc/038
-                            </div>
-
-                        </div>
-                        <p class="card-text">Lorem ipsum dolor sit amet con secte tur, adipisicing elit. a </p>
-                        <div class="bottom_details">
-                            <!-- <img src="../images/background.jpg" alt=""> -->
-                            <a href="#" class="btn btn-primary">View More</a>
-                            <div class="likebuttonbody">
-                                <div  class="likebutton"><a href="#"><i class="fa-solid fa-thumbs-up"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- card 8 dummy -->
-                <div class="card">
-                    <img class="card-img-top" src="https://img.freepik.com/free-photo/view-3d-laptop-device-with-screen-keyboard_23-2150714099.jpg?t=st=1692663038~exp=1692666638~hmac=1d6c28e00cd72b8c1c9281eef537ba73dc8f3cf1d3c250f36f06b8cc4632a83c&w=740" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">How to create a login forum using php</h4>
-                        <div class="author_details">
-                            <div class="author_image">
-                                <img src="../images/background.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </div>
-                            <div class="author_regno">
-                                2020/csc/038
-                            </div>
-
-                        </div>
-                        <p class="card-text">Lorem ipsum dolor sit amet con secte tur, adipisicing elit. a </p>
-                        <div class="bottom_details">
-                            <!-- <img src="../images/background.jpg" alt=""> -->
-                            <a href="#" class="btn btn-primary">View More</a>
-                            <div class="likebuttonbody">
-                                <div  class="likebutton"><a href="#"><i class="fa-solid fa-thumbs-up"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
-                <!-- post your article -->
-                <div class="postarticle">
-                    <div><a href="#" onclick="toggle()"><i class="fa-solid fa-circle-plus"></i></a></div>
-                </div>
+                          
+        <?php
+        $i++;
+                }
+                ?>
+                    <!-- post your article -->
+                    <div class="postarticle">
+                        <div><a href="#" onclick="toggle()"><i class="fa-solid fa-circle-plus"></i></a></div>
+                    </div>
                 
-            </div>
-            <!-- DCS Community -->
-
-            <hr>
-
-            <!-- find a student -->
-            <div class="findastudent" id="findastudent">
-
-                <h1 class="findastudentheading">Find a Student?</h1>
-
-                <!-- searchbar -->
-                <div class="searchbar">
-                    <form action="" method="">
-                        <div class="searchbaritems">
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
-                                <label for="floatingInputGrid">Enter a registration number</label>     
-                            </div>
-                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        </div> 
-                    </form>
                 </div>
-                <!-- searchbar -->
+                <!-- DCS Community -->
+<?php }
 
-                <!-- search student grid -->
-                <div class="searchstudentgrid">
+
+function findStudent()
+{
+    ?>
+
+                <!-- find a student -->
+                <div class="findastudent" id="findastudent">
+
+                    <h1 class="findastudentheading">Find a Student?</h1>
+
+                    <!-- searchbar -->
+                    <div class="searchbar">
+                        <form action="" method="GET">
+                            <div class="searchbaritems">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
+                                    <label for="floatingInputGrid">Enter a registration number</label>     
+                                </div>
+                                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                            </div> 
+                        </form>
+                    </div>
+                    <!-- searchbar -->
+
+                    <!-- search student grid -->
+                    <div class="searchstudentgrid">
                     
-                    <div class="studentlevel">
-                        <div class="level-text">
-                            <p>Level 1</p>
-                        </div> 
-                        <div class="levelimage">
-                            <a href="#"><img src="../images/levels/level1.jpg" alt=""></a>
-                        </div>   
-                    </div>
-
-                    <div class="studentlevel">
-                        <div class="level-text">
-                            <p>Level 2</p>
-                        </div> 
-                        <div class="levelimage">
-                            <a href="#"><img src="../images/levels/level2.jpg" alt=""></a>
+                        <div class="studentlevel">
+                            <div class="level-text">
+                                <p>Level 1</p>
+                            </div> 
+                            <div class="levelimage">
+                                <a href="?level1=#"><img src="../images/levels/level1.jpg" alt=""></a>
+                            </div>   
                         </div>
-                        
-                    </div>
 
-                    <div class="studentlevel">
-                        <div class="level-text">
-                            <p>Level 3</p>
-                        </div> 
-                        <div class="levelimage">
-                            <a href="#"><img src="../images/levels/level3.jpg" alt=""></a>
-                        </div>
+                        <div class="studentlevel">
+                            <div class="level-text">
+                                <p>Level 2</p>
+                            </div> 
+                            <div class="levelimage">
+                                <a href="?level2=#"><img src="../images/levels/level2.jpg" alt=""></a>
+                            </div>
                         
-                    </div>
+                        </div>
 
-                    <div class="studentlevel">
-                        <div class="level-text">
-                            <p>Level 4</p>
-                        </div> 
-                        <div class="levelimage">
-                            <a href="#"><img src="../images/levels/level4.jpg" alt=""></a>
-                        </div>
+                        <div class="studentlevel">
+                            <div class="level-text">
+                                <p>Level 3</p>
+                            </div> 
+                            <div class="levelimage">
+                                <a href="?level3=#"><img src="../images/levels/level3.jpg" alt=""></a>
+                            </div>
                         
-                    </div>
+                        </div>
+
+                        <div class="studentlevel">
+                            <div class="level-text">
+                                <p>Level 4</p>
+                            </div> 
+                            <div class="levelimage">
+                                <a href="?level4=#"><img src="../images/levels/level4.jpg" alt=""></a>
+                            </div>
+                        
+                        </div>
 
                     
                 </div>
                 <!-- searchstudentgrid -->
 
-                <!-- studentdatabase -->
-                <div class="studentdatabase">
-                <hr>
-                    <div class="level1mainbox">
+    <?php
+}
 
-                        <h1 style="text-align: center;" class="findastudentheading">Level 1 Undergraduates</h1>
+function yourArticles()
+{
 
-                        <!-- searchbar -->
-                        <div class="searchbar">
-                            <form action="" method="">
-                                <div class="searchbaritems">
-                                    <div class="form-floating">
-                                        <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
-                                        <label for="floatingInputGrid">Enter a registration number</label>     
+    ?>
+             <h1 class="findastudentheading"  style="margin-top: 200px">Article Dashboard</h1>
+        <?php
+        include("../connection.php");
+        $staff_student_id = $_SESSION['regno'];
+        $query_yourarticle = "SELECT post_id,post_image_path, post_title,current_date FROM post WHERE staff_student_id = '$staff_student_id'";
+        $result_yourarticle = mysqli_query($con, $query_yourarticle);
+        $user_article_count = mysqli_num_rows($result_yourarticle);
+        if ($user_article_count > 0) {
+            while ($row_yourarticle = mysqli_fetch_assoc($result_yourarticle)) {
+                ?>
+
+                        <!-- articledashboard -->
+                        <div class="articledashboard">
+
+                            <div class="articledashboard_child">
+
+                                <div class="postcard">
+
+                                    <div class="postcardimage">
+                                        <img src="../uploads/<?php echo $row_yourarticle['post_image_path']; ?>" class="rounded-circle img-fluid" />
                                     </div>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div> 
-                            </form>
+
+                                    <div class="postcardleft">
+                                        <h4><?php echo $row_yourarticle['post_title']; ?></h4>
+                                        <h5><?php echo $row_yourarticle['current_date']; ?></h5>
+                                    </div>
+                                    
+                                    <div class="postcardright">
+                                        <div class="postcardedit">
+                                            <a href="postedit.php?post_id=<?php echo $row_yourarticle['post_id']?>?>" target="_blank"><i class="fa-solid fa-file-pen"></i></a>
+                                        </div>
+                                        <div class="postcardremove">
+                                            <a href="delete.php?post_id=<?php echo $row_yourarticle['post_id']?>"><i class="fa-solid fa-trash"></i></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
                         </div>
-                        <!-- searchbar -->
+                        <!-- articledashboard -->
 
-                        <div class="level-1-grid">
 
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-                                    <a href="showprofile.php" target="_blank">
-                                        <div class="card profilecardwidth" style="border-radius: 15px;">
-                                        <div class="card-body text-center">
-                                            <div class="mt-3 mb-4">
-                                            <img src="../images/dummyprofile.png"
-                                                class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+            <?php
+            }
+
+        } else {
+            ?>
+                <script>
+                    alert("No posts have been created. If you'd like to share something or make a post, feel free to use the appropriate features to create and publish content.");
+                    window.location.href = "dcs_forum.php";
+                </script>
+                <?php
+        }
+}
+
+function level1()
+{
+include("../connection.php");
+    $query = "SELECT first_name,last_name,linkedIn_link,github_link,hacker_rank,staff_student_user_details.staff_student_id,staff_student_profile_image_path FROM staff_student_user_details LEFT JOIN student_profile ON staff_student_user_details.staff_student_id = student_profile.staff_student_id WHERE user_status = 'level-1' ";
+    $result = mysqli_query($con, $query);
+    ?>  
+
+                    <!-- studentdatabase -->
+                    <!-- <div class="studentdatabase"> -->
+                        <!-- <div class="level1mainbox"> -->
+
+                            <h1 style="text-align: center;" class="findastudentheading">Level 1 Undergraduates</h1>
+
+                            <!-- searchbar -->
+                            <div class="searchbar">
+                                <form action="" method="">
+                                    <div class="searchbaritems">
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
+                                            <label for="floatingInputGrid">Enter a registration number</label>     
+                                        </div>
+                                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                    </div> 
+                                </form>
+                            </div>
+                            <!-- searchbar -->
+                        
+                            <div class="level-1-grid">     
+
+                            <?php
+                            //$i = 0;
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
+                                    <div class="newcard">
+                                        <div class="newImage">
+                                            <img src="../profile/<?php echo $row['staff_student_profile_image_path']; ?>" alt="">
+                                        </div>
+                                        <div class="newcardmiddle">
+                                            <div class="newcardfullname">
+                                                <div class="newcardfirstname">
+                                                    <h3><?php echo $row['first_name'];?></h3>
+                                                </div>
+                                                <div class="newcardlastname">
+                                                    <h3><?php echo $row['last_name'];?></h3>
+                                                </div>
                                             </div>
-                                            <h4 class="mb-2">PDCC Ranathunga</h4>
-                                            <!-- <p class="text-muted mb-2">@web Developer</p> -->
-                                            <p class="text-muted mb-4">2020/CSC/038</p>
-                                            <div class="mb-4 pb-2">
-                                            <button type="button" class="btn btn-outline-primary btn-floating">
-                                                <i class="fa-brands fa-linkedin"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-outline-primary btn-floating">
-                                                <i class="fa-brands fa-github"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-outline-primary btn-floating">
-                                                <i class="fa-brands fa-hackerrank"></i>
-                                            </button>
-                                            </div>
-                                            <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                            <div class="newcardreg">
+                                                <h5><?php echo $row['staff_student_id'];?></h5>
                                             </div>
                                         </div>
+                                        <hr>
+                                        <div class="newcardbottom">
+                                            <div class="newcardbottombox">
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['github_link'] == "no" or $row['github_link'] == "No"){echo "https://github.com/" ;}else{echo $row_level2['github_link'] ;} ?>" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                                </div>
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['linkedIn_link'] == "no" or $row['linkedIn_link'] == "No"){echo "https://www.linkedin.com/" ;}else{echo $row_level2['linkedIn_link'] ;} ?>" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                                                </div>
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['hacker_rank'] == "no" or $row['hacker_rank'] == "No"){echo "https://www.hackerrank.com/" ;}else{echo $row_level2['hacker_rank'] ;} ?>" target="_blank"><i class="fa-brands fa-hackerrank"></i></a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </a>
-                                </div>
-                                </div>
+                                        <div class="viewprofilebottom">
+                                            <a href="showFullProfile.php?id=<?php echo $row['staff_student_id']; ?>" target="_blank">Profile</a>
+                                        </div>
+                                    </div>
+                        
+                                <?php
+                                //$i++;
+                            } ?>
+
                             </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
 
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
 
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
+    <?php
+}
 
-                                </div>
-                                </div>
+function level2()
+{
+    include("../connection.php");
+    $query = "SELECT first_name,last_name,linkedIn_link,github_link,hacker_rank,staff_student_user_details.staff_student_id,staff_student_profile_image_path FROM staff_student_user_details LEFT JOIN student_profile ON staff_student_user_details.staff_student_id = student_profile.staff_student_id WHERE user_status = 'level-2' ";
+    $result = mysqli_query($con, $query);
+    ?>  
+
+                    <!-- studentdatabase -->
+                    <!-- <div class="studentdatabase"> -->
+                        <!-- <div class="level1mainbox"> -->
+
+                            <h1 style="text-align: center;" class="findastudentheading">Level 2 Undergraduates</h1>
+
+                            <!-- searchbar -->
+                            <div class="searchbar">
+                                <form action="" method="">
+                                    <div class="searchbaritems">
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
+                                            <label for="floatingInputGrid">Enter a registration number</label>     
+                                        </div>
+                                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                    </div> 
+                                </form>
                             </div>
+                            <!-- searchbar -->
+                        
+                            <div class="level-1-grid">     
 
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                            <?php
+                            //$i = 0;
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
+                                    <div class="newcard">
+                                        <div class="newImage">
+                                            <img src="../profile/<?php echo $row['staff_student_profile_image_path']; ?>" alt="">
                                         </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
+                                        <div class="newcardmiddle">
+                                            <div class="newcardfullname">
+                                                <div class="newcardfirstname">
+                                                    <h3><?php echo $row['first_name'];?></h3>
+                                                </div>
+                                                <div class="newcardlastname">
+                                                    <h3><?php echo $row['last_name'];?></h3>
+                                                </div>
+                                            </div>
+                                            <div class="newcardreg">
+                                                <h5><?php echo $row['staff_student_id'];?></h5>
+                                            </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        <hr>
+                                        <div class="newcardbottom">
+                                            <div class="newcardbottombox">
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['github_link'] == "no" or $row['github_link'] == "No"){echo "https://github.com/" ;}else{echo $row_level2['github_link'] ;} ?>" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                                </div>
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['linkedIn_link'] == "no" or $row['linkedIn_link'] == "No"){echo "https://www.linkedin.com/" ;}else{echo $row_level2['linkedIn_link'] ;} ?>" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                                                </div>
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['hacker_rank'] == "no" or $row['hacker_rank'] == "No"){echo "https://www.hackerrank.com/" ;}else{echo $row_level2['hacker_rank'] ;} ?>" target="_blank"><i class="fa-brands fa-hackerrank"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="viewprofilebottom">
+                                            <a href="showFullProfile.php?id=<?php echo $row['staff_student_id']; ?>" target="_blank">Profile</a>
                                         </div>
                                     </div>
-                                    </div>
+                        
+                                <?php
+                                //$i++;
+                            } ?>
 
-                                </div>
-                                </div>
                             </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
 
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
 
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
+    <?php
+}
 
-                                </div>
-                                </div>
+function level3()
+{
+    include("../connection.php");
+    $query = "SELECT first_name,last_name,linkedIn_link,github_link,hacker_rank,staff_student_user_details.staff_student_id,staff_student_profile_image_path FROM staff_student_user_details LEFT JOIN student_profile ON staff_student_user_details.staff_student_id = student_profile.staff_student_id WHERE user_status = 'level-3' ";
+    $result = mysqli_query($con, $query);
+    ?>  
+
+                    <!-- studentdatabase -->
+                    <!-- <div class="studentdatabase"> -->
+                        <!-- <div class="level1mainbox"> -->
+
+                            <h1 style="text-align: center;" class="findastudentheading">Level 3 Undergraduates</h1>
+
+                            <!-- searchbar -->
+                            <div class="searchbar">
+                                <form action="" method="">
+                                    <div class="searchbaritems">
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
+                                            <label for="floatingInputGrid">Enter a registration number</label>     
+                                        </div>
+                                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                    </div> 
+                                </form>
                             </div>
+                            <!-- searchbar -->
+                        
+                            <div class="level-1-grid">     
 
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                            <?php
+                            //$i = 0;
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
+                                    <div class="newcard">
+                                        <div class="newImage">
+                                            <img src="../profile/<?php echo $row['staff_student_profile_image_path']; ?>" alt="">
                                         </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
+                                        <div class="newcardmiddle">
+                                            <div class="newcardfullname">
+                                                <div class="newcardfirstname">
+                                                    <h3><?php echo $row['first_name'];?></h3>
+                                                </div>
+                                                <div class="newcardlastname">
+                                                    <h3><?php echo $row['last_name'];?></h3>
+                                                </div>
+                                            </div>
+                                            <div class="newcardreg">
+                                                <h5><?php echo $row['staff_student_id'];?></h5>
+                                            </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        <hr>
+                                        <div class="newcardbottom">
+                                            <div class="newcardbottombox">
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['github_link'] == "no" or $row['github_link'] == "No"){echo "https://github.com/" ;}else{echo $row_level2['github_link'] ;} ?>" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                                </div>
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['linkedIn_link'] == "no" or $row['github_link'] == "No"){echo "https://www.linkedin.com/" ;}else{echo $row_level2['linkedIn_link'] ;} ?>" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                                                </div>
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['hacker_rank'] == "no" or $row['github_link'] == "No"){echo "https://www.hackerrank.com/" ;}else{echo $row_level2['hacker_rank'] ;} ?>" target="_blank"><i class="fa-brands fa-hackerrank"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="viewprofilebottom">
+                                            <a href="showFullProfile.php?id=<?php echo $row['staff_student_id']; ?>" target="_blank">Profile</a>
                                         </div>
                                     </div>
-                                    </div>
+                        
+                                <?php
+                                //$i++;
+                            } ?>
 
-                                </div>
-                                </div>
                             </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
 
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
 
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
+    <?php
+}
 
-                                </div>
-                                </div>
+function level4()
+{
+include("../connection.php");
+    $query = "SELECT first_name,last_name,linkedIn_link,github_link,hacker_rank,staff_student_user_details.staff_student_id,staff_student_profile_image_path FROM staff_student_user_details LEFT JOIN student_profile ON staff_student_user_details.staff_student_id = student_profile.staff_student_id WHERE user_status = 'level-4' ";
+    $result = mysqli_query($con, $query);
+    ?>  
+
+                    <!-- studentdatabase -->
+                    <!-- <div class="studentdatabase"> -->
+                        <!-- <div class="level1mainbox"> -->
+
+                            <h1 style="text-align: center;" class="findastudentheading">Level 4 Undergraduates</h1>
+
+                            <!-- searchbar -->
+                            <div class="searchbar">
+                                <form action="" method="">
+                                    <div class="searchbaritems">
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
+                                            <label for="floatingInputGrid">Enter a registration number</label>     
+                                        </div>
+                                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                    </div> 
+                                </form>
                             </div>
+                            <!-- searchbar -->
+                        
+                            <div class="level-1-grid">     
 
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
+                            <?php
+                            //$i = 0;
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
+                                    <div class="newcard">
+                                        <div class="newImage">
+                                            <img src="../profile/<?php echo $row['staff_student_profile_image_path']; ?>" alt="">
                                         </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
+                                        <div class="newcardmiddle">
+                                            <div class="newcardfullname">
+                                                <div class="newcardfirstname">
+                                                    <h3><?php echo $row['first_name'];?></h3>
+                                                </div>
+                                                <div class="newcardlastname">
+                                                    <h3><?php echo $row['last_name'];?></h3>
+                                                </div>
+                                            </div>
+                                            <div class="newcardreg">
+                                                <h5><?php echo $row['staff_student_id'];?></h5>
+                                            </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                        <hr>
+                                        <div class="newcardbottom">
+                                            <div class="newcardbottombox">
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['github_link'] == "no" or $row['github_link'] == "No"){echo "https://github.com/" ;}else{echo $row_level2['github_link'] ;} ?>" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                                </div>
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['linkedIn_link'] == "no" or $row['github_link'] == "No"){echo "https://www.linkedin.com/" ;}else{echo $row_level2['linkedIn_link'] ;} ?>" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                                                </div>
+                                                <div class="linksocial">
+                                                    <a href="<?php if($row['hacker_rank'] == "no" or $row['github_link'] == "No"){echo "https://www.hackerrank.com/" ;}else{echo $row_level2['hacker_rank'] ;} ?>" target="_blank"><i class="fa-brands fa-hackerrank"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="viewprofilebottom">
+                                            <a href="showFullProfile.php?id=<?php echo $row['staff_student_id']; ?>" target="_blank">Profile</a>
                                         </div>
                                     </div>
-                                    </div>
+                        
+                                <?php
+                                //$i++;
+                            } ?>
 
-                                </div>
-                                </div>
                             </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
 
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
 
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="level2mainbox">
-
-                        <h1 style="text-align: center;" class="findastudentheading">Level 2 Undergraduates</h1>
-
-                        <!-- searchbar -->
-                        <div class="searchbar">
-                            <form action="" method="">
-                                <div class="searchbaritems">
-                                    <div class="form-floating">
-                                        <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
-                                        <label for="floatingInputGrid">Enter a registration number</label>     
-                                    </div>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div> 
-                            </form>
-                        </div>
-                        <!-- searchbar -->
-
-                        <div class="level-1-grid">
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="level3mainbox">
-
-                        <h1 style="text-align: center;" class="findastudentheading">Level 3 Undergraduates</h1>
-
-                        <!-- searchbar -->
-                        <div class="searchbar">
-                            <form action="" method="">
-                                <div class="searchbaritems">
-                                    <div class="form-floating">
-                                        <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
-                                        <label for="floatingInputGrid">Enter a registration number</label>     
-                                    </div>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div> 
-                            </form>
-                        </div>
-                        <!-- searchbar -->
-
-                        <div class="level-1-grid">
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="level4mainbox">
-
-                        <h1 style="text-align: center;" class="findastudentheading">Level 4 Undergraduates</h1>
-
-                        <!-- searchbar -->
-                        <div class="searchbar">
-                            <form action="" method="">
-                                <div class="searchbaritems">
-                                    <div class="form-floating">
-                                        <input type="password" class="form-control" id="floatingInputGrid" placeholder="Enter a registration number" value="">
-                                        <label for="floatingInputGrid">Enter a registration number</label>     
-                                    </div>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div> 
-                            </form>
-                        </div>
-                        <!-- searchbar -->
-
-                        <div class="level-1-grid">
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="container profilecard">
-                                <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-md-12 col-xl-4">
-
-                                    <div class="card profilecardwidth" style="border-radius: 15px;">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3 mb-4">
-                                        <img src="../images/dummyprofile.png"
-                                            class="rounded-circle img-fluid" style="width: 200px; height: 200px;" />
-                                        </div>
-                                        <h4 class="mb-2">PDCC Ranathunga</h4>
-                                        <p class="text-muted mb-2">@web Developer</p>
-                                        <p class="text-muted mb-4">2020/CSC/038</p>
-                                        <div class="mb-4 pb-2">
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-linkedin"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-primary btn-floating">
-                                            <i class="fa-brands fa-github"></i>
-                                        </button>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg profilebutton">
-                                        contact me
-                                        </button>
-                                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-                <!-- studentdatabase -->
+    <?php
+}
+?>
+                
 
             </div>
+                <!-- studentdatabase -->
+             </div>
             <!-- find a student -->
-
-            <!-- articledashboard -->
-            <div class="articledashboard">
-
-                <h1 class="findastudentheading"  style="margin-top: 200px">Article Dashboard</h1>
-
-                <div class="articledashboard_child">
-
-                    <div class="postcard">
-
-                        <div class="postcardimage">
-                        <img src="../images/login.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px;" />
-                        </div>
-
-                        <div class="postcardleft">
-                            <h4>How to create a login forum using php</h4>
-                            <h5>2023/08/24</h5>
-                        </div>
-
-                        <div class="postcardmiddle">
-                            
-                        </div>
-
-                        <div class="postcardright">
-                            <div class="postcardedit">
-                                <a href=""><i class="fa-solid fa-file-pen"></i></a>
-                            </div>
-                            <div class="postcardremove">
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-            <!-- articledashboard -->
+           
         
         </div>
     </div>
 
     <!-- post your article -->
     <div class="postarticleform" id="postarticleform">
-        <form action="" method="POST">
+	
+	
+        <form action="../upload.php" method="POST" enctype="multipart/form-data" >
             
             <div class="addpostclosebutton">
                 <a href="#" onclick="closePopup()"><i class="fa-solid fa-circle-xmark"></i></a>
@@ -1584,33 +724,32 @@
                 <h1>Add Your Post</h1>
             </div>
 
-
             <input type="hidden" name="postId" value="">
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Post Title" name="regno" value="" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Post Title" name="title" value="" required>
                     <label for="floatingInputGrid">Post Title</label>
-                    
-                </div>
             </div>
 
+                    
+                </div>
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <textarea type="text" class="form-control" id="floatingInputGrid" placeholder="Type your description..." name="name" value="" rows="50" required></textarea>
+                    <textarea type="text" class="form-control" id="floatingInputGrid" placeholder="Type your description..." name="description" value="" required style="height: 380px"></textarea>
                     <label for="floatingInputGrid">Type your description...</label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="file" class="form-control" id="floatingInputGrid" name="name" value="" required>
+                    <input type="file" class="form-control" id="floatingInputGrid" name="fileToUpload" value="" required>
                     <label for="floatingInputGrid">Image</label>
                 </div>
             </div>
 
             <div class="col-auto postbutton">
-                <button type="submit" class="btn btn-primary mb-3">Post</button>
+                <button type="submit" class="btn btn-primary mb-3" name="submit">Post</button>
             </div>
 
         </form>
@@ -1619,7 +758,7 @@
 
     <!-- feedbackform -->
     <div class="feedbackform" id="feedbackform">
-        <form action="" method="POST">
+        <form action="feedback_insertion.php" method="POST">
             
             <div class="addpostclosebutton">
                 <a href="#" onclick="closePopupFeedback()"><i class="fa-solid fa-circle-xmark"></i></a>
@@ -1634,20 +773,20 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Feedback Title" name="regno" value="" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Feedback Title" name="feedbackTitle" value="" required>
                     <label for="floatingInputGrid">Feedback Title</label> 
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <textarea type="text" class="form-control" id="floatingInputGrid" placeholder="Feedback description..." name="name" value="" rows="50" required></textarea>
+                    <textarea type="text" class="form-control" id="floatingInputGrid" placeholder="Feedback description..." name="feedbackDescription" value="" rows="50" required></textarea>
                     <label for="floatingInputGrid">Feedback description...</label>
                 </div>
             </div>
 
             <div class="col-auto postbutton">
-                <button type="submit" class="btn btn-primary mb-3">Send Your Feedback</button>
+                <button type="submit" class="btn btn-primary mb-3" name="SendYourFeedback">Send Your Feedback</button>
             </div>
 
         </form>
@@ -1657,11 +796,12 @@
     <!-- updatedetails -->
     <div class="updatedetails" id="updatedetails">
         
-        <form action="" method="POST">
+        <form action="update_profile.php" method="POST" enctype="multipart/form-data" >
             
             <div class="addpostclosebutton">
                 <a href="#" onclick="closePopupUpdate()"><i class="fa-solid fa-circle-xmark"></i></a>
             </div>
+        
             
             <div class="addposttitle">
                 <h1>Let Us Know!</h1>
@@ -1673,7 +813,7 @@
              <!-- regno -->
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Reg No" name="regno" value="2020/CSC/038" disabled>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Reg No" name="regno" value="<?php echo $staff_student_id; ?>" disabled>
                     <label for="floatingInputGrid">Reg No</label> 
                 </div>
             </div>
@@ -1682,7 +822,7 @@
             <!-- First Name -->
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="firstname" value="Chanuka" required disabled>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="firstname" value="<?php echo $firstname; ?>" required disabled>
                     <label for="floatingInputGrid">First Name</label> 
                 </div>
             </div>
@@ -1691,7 +831,7 @@
             <!-- Last Name -->
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Last Name" name="lastname" value="Ranathunga" required disabled>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Last Name" name="lastname" value="<?php echo $lastname; ?>" required disabled>
                     <label for="floatingInputGrid">Last Name</label> 
                 </div>
             </div>
@@ -1700,7 +840,7 @@
             <!-- email -->
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInputGrid" placeholder="Registered Email Address" name="email" value="chamith.chanuka23@gmail.com" rows="50" required disabled>
+                    <input type="email" class="form-control" id="floatingInputGrid" placeholder="Registered Email Address" name="email" value="<?php echo $email; ?>" rows="50" required disabled>
                     <label for="floatingInputGrid">Registered Email Address</label>
                 </div>
             </div>
@@ -1709,7 +849,7 @@
             <!-- image -->
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="file" class="form-control" id="floatingInputGrid" name="name" value="" required>
+                    <input type="file" class="form-control" id="floatingInputGrid" name="fileToUpload" value="" required>
                     <label for="floatingInputGrid">Image</label>
                 </div>
             </div>
@@ -1720,7 +860,7 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <textarea type="text" class="form-control" id="floatingInputGrid" placeholder="Short Bio..." name="bio" value="" rows="10" required></textarea>
+                    <textarea type="text" class="form-control" id="floatingInputGrid" placeholder="Short Bio..." name="bio" value="" required style="height: 300px"></textarea>
                     <label for="floatingInputGrid">Short Bio...<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -1731,14 +871,14 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="education-1" name="education-1" value=""required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="education-1" name="education_1" value=""required>
                     <label for="floatingInputGrid">Education 1<span style="color: red;">*</span></label>
                 </div>
             </div>
             
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="education-2" name="education-2" value=""required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="education-2" name="education_2" value=""required>
                     <label for="floatingInputGrid">Education 2<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -1749,28 +889,28 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-1" name="skill-1" value=""required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-1" name="skill_1" value=""required>
                     <label for="floatingInputGrid">Skill 1<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-2" name="skill-2" value=""required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-2" name="skill_2" value=""required>
                     <label for="floatingInputGrid">Skill 2<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-3" name="skill-3" value=""required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-3" name="skill_3" value=""required>
                     <label for="floatingInputGrid">Skill 3<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-4" name="skill-4" value=""required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="skill-4" name="skill_4" value=""required>
                     <label for="floatingInputGrid">Skill 4<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -1781,14 +921,14 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="language-1" name="language-1" value=""required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="language-1" name="language_1" value=""required>
                     <label for="floatingInputGrid">Language 1<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="language-2" name="language-2" value="" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="language-2" name="language_2" value="" required>
                     <label for="floatingInputGrid">Language 2<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -1799,14 +939,14 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="experience-1" name="experience-1" value="" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="experience-1" name="experience_1" value="" required>
                     <label for="floatingInputGrid">Experience 1<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="experience-2" name="experience-2" value=""required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="experience-2" name="experience_2" value=""required>
                     <label for="floatingInputGrid">Experience 2<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -1817,14 +957,14 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="volunteering-1" name="volunteering-1" value="" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="volunteering-1" name="volunteering_1" value="" required>
                     <label for="floatingInputGrid">Volunteering 1<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="volunteering-2" name="volunteering-2" value=""required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="volunteering-2" name="volunteering_2" value=""required>
                     <label for="floatingInputGrid">Volunteering 2<span style="color: red;">*</span></label>
                 </div>
             </div>
@@ -1835,15 +975,22 @@
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Linkedin" name="socialmedia-1" value="" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Linkedin" name="socialmedia_1" value="" required>
                     <label for="floatingInputGrid">Linkedin<span style="color: red;">*</span></label>
                 </div>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Github" name="socialmedia-2" value="" required>
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Github" name="socialmedia_2" value="" required>
                     <label for="floatingInputGrid">Github<span style="color: red;">*</span></label>
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Hacker Rank" name="hackerrank" value="" required>
+                    <label for="floatingInputGrid">Hacker Rank<span style="color: red;">*</span></label>
                 </div>
             </div>
             <!-- socialmedia links -->
@@ -1851,21 +998,27 @@
             <label for="floatingInputGrid" style="margin-top: 20px;">By updating this form, I certify that above entered details are true...</label>
 
             <div class="col-auto postbutton">
-                <button type="submit" class="btn btn-primary mb-3">Update profile</button>
+                <button type="submit" class="btn btn-primary mb-3" name="Update_profile">Update profile</button>
             </div>
 
         </form>
     </div>
     <!-- updatedetails -->
 
-    <!-- showprofile -->
-
-    <!-- showprofile -->
-
-
 
     <!-- javascript -->
     <script type="text/javascript">  
+
+        function sidebareffect(){
+            const body = document.querySelector("body"),
+            sidebar = body.querySelector(".sidebar"),
+            toggle = body.querySelector(".menuicon");
+
+            toggle.addEventListener("click",() => {
+                sidebar.classList.toggle("close");
+            });
+        }
+
         // open script
         function toggle(){
             var blur = document.getElementById('blur');
@@ -1873,6 +1026,7 @@
             var postarticleform = document.getElementById('postarticleform');
             postarticleform.classList.toggle('active');
         }
+		
 
         function feedbacktoggle(){
             var blur = document.getElementById('blur');

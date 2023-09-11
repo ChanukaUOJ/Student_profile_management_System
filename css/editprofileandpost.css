@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+
+body{
+    background-color: #f1f1f1;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6rem;
+    color: #010c1f;
+}
+
+a{
+    text-decoration: none;
+    color: #010c1f;
+}
+
+.updatedetails, .postarticleform{
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+    background-color: white;
+    padding: 25px 30px;
+    -webkit-box-shadow: 2px 2px 8px 0px #80adfa;
+            box-shadow: 2px 2px 8px 0px #80adfa;
+    z-index: 15;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    height: 800px;
+    overflow: auto;
+    overflow-y: scroll;
+    -webkit-box-shadow: 1px 1px 3px 0px #cfcfcf;
+            box-shadow: 1px 1px 3px 0px #cfcfcf;
+}
+
+.addposttitle h1{
+        position: relative;
+        text-align: center;
+        font-weight: bold;
+        margin: 40px 0px 20px 0px;
+}
+
+.postbutton{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: end;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        margin-top: 40px;
+    }
+    
+.postbutton button{
+        padding: 10px 20px;
+        border: none;
+}
+
+.postbutton button:hover{
+        background-color: rgb(60, 187, 77);
+        border: none;
+}
+
+@media (max-width: 600px) {
+        .updatedetails,.postarticleform{
+                width: 90%;
+        }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+        .updatedetails,.postarticleform{
+                width: 90%;
+        }
+}
+
+@media (min-width: 1025px) and (max-width: 1300px) {
+        .updatedetails,.postarticleform{
+                width: 90%;
+        }
+}  

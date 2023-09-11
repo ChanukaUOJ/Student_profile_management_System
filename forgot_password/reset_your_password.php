@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +24,7 @@
 
                     <p style="text-align: center;">Enter your registration number and verify the account to send your reset code.</p>
 
-                    <form action="" method="POST">
+                    <form action="../verify_reset_your_password.php" method="POST">
 
                         <input type="hidden" name="userId">
 
@@ -30,7 +33,7 @@
                                 <div class="input-group-text"><i class="fa-solid fa-image-portrait"></i></div>
                             </div>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Registration Number" value="">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Registration Number" name="Registration_Number" >
                                 <label for="floatingInputGrid">registration Number</label>
                             </div>
                         </div>
@@ -41,7 +44,7 @@
 
                         <p></p>
 
-                        <p style="text-align: center; margin-top: 15px;"><a href="#">Resend</a></p>
+                        <!-- <p style="text-align: center; margin-top: 15px;"><a href="../phpmailer.php">Resend</a></p> -->
                         
                     </form>             
                 

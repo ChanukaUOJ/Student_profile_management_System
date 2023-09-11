@@ -1,3 +1,10 @@
+<?php
+session_start();
+//if(!isset($_SESSION['regno'])){
+	//header("Location:index.php");
+//}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +26,8 @@
                     <h3 style="text-align: center; font-size: 42px;"><span style="font-weight: 600;">Verification</span></h3> 
                     <p style="text-align: center; margin-top: 40px">The account verification code has been
                         sent to your registered email address
-                        <span style="font-weight: bold;">absc@gmail.com</span></p>
-                    <form action="" method="POST">
+                        <span style="font-weight: bold;"><?php echo $_SESSION['email'] ?></span></p>
+                    <form action="user_verification.php" method="POST">
 
                         <input type="hidden" name="userId">
 
@@ -29,7 +36,7 @@
                                 <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
                             </div>
                             <div class="form-floating">
-                                <input type="number" class="form-control" id="floatingInputGrid" placeholder="University Registered Email" value="">
+                                <input type="number" class="form-control" id="floatingInputGrid" placeholder="University Registered Email" name = "verification_code">
                                 <label for="floatingInputGrid">6 digit verification code</label>
                             </div>
                         </div>
@@ -39,8 +46,8 @@
                         </div>
 
                         <p></p>
-
-                        <p style="text-align: center; margin-top: 15px;"><a href="#">Resend</a></p>
+			
+                        <p style="text-align: center; margin-top: 15px;"><a href="verify_reset_your_password.php?send=ok&staff_student_id=<?php echo strtoupper($_SESSION['staff_student_id']); ?>" target="_self">Resend</a></p>
                         
                     </form>
                 

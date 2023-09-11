@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION['regno'])){
+	header("Location:../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +24,7 @@
                
                     <h3 style="text-align: center; font-size: 42px;"><span style="font-weight: 600;">Reset your password</span></h3> 
                     <p style="text-align: center;">Enter a valid password</p>
-                    <form action="" method="POST">
+                    <form action="validate_change_password.php" method="POST">
 
                         <input type="hidden" name="userId">
 
@@ -27,7 +33,7 @@
                                 <div class="input-group-text"><i class="fa-solid fa-id-card"></i></div>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingInputGrid" placeholder="Reg No | Staff ID" value="">
+                                <input type="password" class="form-control" id="floatingInputGrid" placeholder="Reg No | Staff ID" name="New_password">
                                 <label for="floatingInputGrid">New password</label>     
                             </div>
                         </div>
@@ -37,13 +43,13 @@
                                 <div class="input-group-text"><i class="fa-solid fa-id-card"></i></div>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingInputGrid" placeholder="Reg No | Staff ID" value="">
+                                <input type="password" class="form-control" id="floatingInputGrid" placeholder="Reg No | Staff ID" name="Confirm_password">
                                 <label for="floatingInputGrid">Confirm password</label>     
                             </div>
                         </div>
 
                         <div class="col-auto">
-                            <button type="submit" class="btn btn-primary mb-3">Change password</button>
+                            <button type="submit" class="btn btn-primary mb-3" name="Change_password">Change password</button>
                         </div>
 
                         <p style="text-align: center;">You will be redirected to the login page immediately!</p>
